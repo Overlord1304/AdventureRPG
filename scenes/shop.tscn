@@ -1,0 +1,155 @@
+[gd_scene load_steps=11 format=3 uid="uid://b2evb2ai727xl"]
+
+[ext_resource type="Script" uid="uid://bq5tbwl3oxepc" path="res://scripts/shop.gd" id="1_xfvoa"]
+[ext_resource type="FontFile" uid="uid://b1ecuue8wn2td" path="res://fonts/Fredoka-Regular.ttf" id="2_1l46r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfvoa"]
+bg_color = Color(0.99607843, 0.43529412, 0.38039216, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1l46r"]
+bg_color = Color(1.4131035, 0.6298228, 0.553138, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_032fp"]
+bg_color = Color(0.6289062, 0.26402012, 0.22829702, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2fc2m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyhfs"]
+
+[sub_resource type="Theme" id="Theme_tbgi4"]
+Panel/styles/panel = SubResource("StyleBoxFlat_jyhfs")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
+bg_color = Color(0.50980395, 0.7764706, 0.88235295, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.30588236)
+shadow_size = 10
+
+[node name="shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xfvoa")
+
+[node name="close" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -97.0
+offset_right = 209.0
+offset_bottom = -23.0
+grow_vertical = 0
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1l46r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_032fp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2fc2m")
+text = "Close"
+
+[node name="ui" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -267.0
+offset_top = 32.0
+offset_right = 281.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_tbgi4")
+
+[node name="title" type="Label" parent="ui"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 75
+text = "SHOP"
+horizontal_alignment = 1
+
+[node name="message" type="Label" parent="ui"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 35
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="upg1" type="Button" parent="ui"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1l46r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_032fp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2fc2m")
+text = "Strength Increase(+2 Attack 
+Strength (15 Coins)"
+
+[node name="Background" type="Panel" parent="."]
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tefeu")
+
+[node name="Outline" type="Panel" parent="."]
+z_index = -2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.0
+offset_top = -302.0
+offset_right = 304.0
+offset_bottom = 301.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o6xl0")
+
+[connection signal="pressed" from="close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="ui/upg1" to="." method="_on_upg_1_pressed"]
