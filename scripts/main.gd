@@ -51,7 +51,7 @@ func player_attack():
 func enemy_attack():
 	var dmg = Global.current_enemy.attack
 	Global.health -= dmg
-	message_label.text = "It hits you for %d" % dmg
+	message_label.text = "It hits you for %d, it has %s health left" % [dmg,Global.current_enemy.health]
 	if Global.health <= 0:
 		game_over()
 func win_battle():
@@ -78,11 +78,12 @@ func check_level_up():
 		Global.base_attack += 2
 		Global.health = Global.max_health
 
-		message_label.text += "\nLevel UP!"
+		message_label.text += " Level Up!"
 func update_ui():
 	$ui/stats/level.text = "Level: %d" % Global.level
-	$ui/stats/currency.text = "Currency: %d" % Global.currency
+	$ui/stats/currency.text = "Coins: %d" % Global.currency
 	$ui/stats/astrength.text = "Attack: %d" % (Global.base_attack+Global.attack_bonus)
+	$ui/health.text = "Health: %d" % Global.health
 	health_bar.max_value = Global.max_health
 	health_bar.value = max(Global.health,0)
 	$ui/HBoxContainer/castspell.visible = has_spell()

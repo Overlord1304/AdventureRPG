@@ -1,7 +1,65 @@
-[gd_scene load_steps=3 format=3 uid="uid://bk0ytbb6gwecd"]
+[gd_scene load_steps=13 format=3 uid="uid://bk0ytbb6gwecd"]
 
 [ext_resource type="Script" uid="uid://c6h22hipvelmk" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="FontFile" uid="uid://b1ecuue8wn2td" path="res://fonts/Fredoka-Regular.ttf" id="2_sugp2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyhfs"]
+
+[sub_resource type="Theme" id="Theme_tbgi4"]
+Panel/styles/panel = SubResource("StyleBoxFlat_jyhfs")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sugp2"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wfyh"]
+bg_color = Color(0.99607843, 0.43529412, 0.38039216, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
+bg_color = Color(0.99607843, 0.43529412, 0.38039216, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
+bg_color = Color(1.4131035, 0.6298228, 0.553138, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85g3d"]
+bg_color = Color(0.6289062, 0.26402012, 0.22829702, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0wfyh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
+bg_color = Color(0.50980395, 0.7764706, 0.88235295, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.30588236)
+shadow_size = 10
 
 [node name="main" type="Control"]
 layout_mode = 3
@@ -14,11 +72,17 @@ script = ExtResource("1_0wfyh")
 
 [node name="ui" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -267.0
+offset_top = 32.0
+offset_right = 281.0
+offset_bottom = -38.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_tbgi4")
 
 [node name="title" type="Label" parent="ui"]
 layout_mode = 2
@@ -31,10 +95,11 @@ horizontal_alignment = 1
 [node name="stats" type="VBoxContainer" parent="ui"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="level" type="Label" parent="ui/stats"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_sugp2")
 theme_override_font_sizes/font_size = 35
@@ -43,7 +108,7 @@ horizontal_alignment = 1
 
 [node name="currency" type="Label" parent="ui/stats"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_sugp2")
 theme_override_font_sizes/font_size = 35
@@ -52,7 +117,7 @@ horizontal_alignment = 1
 
 [node name="astrength" type="Label" parent="ui/stats"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_sugp2")
 theme_override_font_sizes/font_size = 35
@@ -60,7 +125,10 @@ text = "Attack Strength : 12"
 horizontal_alignment = 1
 
 [node name="HealthBar" type="ProgressBar" parent="ui"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_sugp2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0wfyh")
 show_percentage = false
 
 [node name="health" type="Label" parent="ui"]
@@ -74,14 +142,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="message" type="Label" parent="ui"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_sugp2")
 theme_override_font_sizes/font_size = 35
-text = "blahblah"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ui"]
 layout_mode = 2
@@ -89,28 +158,57 @@ layout_mode = 2
 [node name="attack" type="Button" parent="ui/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_sugp2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tbgi4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tipki")
+theme_override_styles/hover = SubResource("StyleBoxFlat_85g3d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0wfyh")
 text = "Attack"
 
 [node name="heal" type="Button" parent="ui/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_sugp2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tbgi4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tipki")
+theme_override_styles/hover = SubResource("StyleBoxFlat_85g3d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0wfyh")
 text = "Heal"
 
 [node name="shop" type="Button" parent="ui/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Shop
-"
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_sugp2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tbgi4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tipki")
+theme_override_styles/hover = SubResource("StyleBoxFlat_85g3d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0wfyh")
+text = "Shop"
 
 [node name="explore" type="Button" parent="ui/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_sugp2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tbgi4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tipki")
+theme_override_styles/hover = SubResource("StyleBoxFlat_85g3d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0wfyh")
 text = "Explore"
 
 [node name="castspell" type="Button" parent="ui/HBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_sugp2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tbgi4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tipki")
+theme_override_styles/hover = SubResource("StyleBoxFlat_85g3d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0wfyh")
 text = "Cast Spell"
 
 [node name="shop" type="Panel" parent="ui"]
@@ -128,5 +226,33 @@ layout_mode = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Background" type="Panel" parent="."]
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tefeu")
+
+[node name="Outline" type="Panel" parent="."]
+z_index = -2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.0
+offset_top = -302.0
+offset_right = 304.0
+offset_bottom = 239.612
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o6xl0")
 
 [connection signal="pressed" from="ui/HBoxContainer/attack" to="." method="_on_attack_pressed"]
