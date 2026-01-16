@@ -6,6 +6,7 @@ extends Control
 var health_tween
 var displayed_health = 0
 func _ready():
+	print(Global.iblast_bought)
 	$ui/message.hide()
 	Global.load_game()
 	randomize()
@@ -13,6 +14,10 @@ func _ready():
 	health_bar.value = Global.health
 	if Global.sbol:
 		start_new_battle()
+	if Global.fball_bought:
+		$ui/spellselect/container/fireball.show()
+	if Global.iblast_bought:
+		$ui/spellselect/container/iceblast.show()
 	update_ui()
 
 func start_new_battle():
@@ -37,7 +42,7 @@ func create_random_enemy():
 func create_boss():
 	return {
 		"name": "Dragon",
-		"health": 30 + Global.level * 12*1.25,
+		"health": int(ceil(30 + Global.level * 12*1.25)),
 		"attack": 6 + Global.level * 3*1.5,
 		"is_boss": true,
 	}
@@ -100,7 +105,6 @@ func update_ui():
 	animate_hb(Global.health)
 	$ui/HBoxContainer/castspell.visible = has_spell()
 	$ui/spellselect.visible = has_spell()
-	print(has_spell())
 	$ui/HBoxContainer/heal.disabled = (
 		Global.phase == Global.game_phase.FIGHTING
 		and not Global.enemy_defeated
@@ -152,7 +156,7 @@ func _on_shop_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/shop.tscn")
 func select_spell(spell_name):
 	Global.spell_selected = spell_name
-	message_label.text = "Selected spell: %s" % spell_name
+	message_label.text = "Selected spell"
 	
 
 func _on_fireball_pressed() -> void:
@@ -168,7 +172,7 @@ func cast_spell():
 		"iceblast_spell":
 			dmg = 75
 	Global.current_enemy.health -= dmg
-	message_label.text = "You can %s for %d damage" %[Global.spell_selected,dmg]
+	message_label.text = "You cast %s for %d damage" %[Global.spell_selected,dmg]
 	Global.sutf = true
 	for b in spell_group.get_buttons():
 		b.button_pressed = false
@@ -182,3 +186,7 @@ func cast_spell():
 
 func _on_castspell_pressed() -> void:
 	cast_spell()
+
+
+func _on_iceblast_pressed() -> void:
+	select_spell("iceblast_spell")

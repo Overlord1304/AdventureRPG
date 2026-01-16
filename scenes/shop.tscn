@@ -120,8 +120,40 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_1l46r")
 theme_override_styles/hover = SubResource("StyleBoxFlat_032fp")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2fc2m")
+text = "
+
+"
+
+[node name="upg1cost" type="Label" parent="ui/upg1"]
+layout_mode = 0
+offset_left = 286.0
+offset_top = 36.0
+offset_right = 953.0
+offset_bottom = 80.0
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 30
+text = "15 coins"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="ui/upg1"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 0
+offset_left = 24.0
+offset_top = -8.0
+offset_right = 524.0
+offset_bottom = 83.0
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 30
 text = "Strength Increase(+2 Attack 
-Strength) (15 Coins)"
+Strength) -                "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="upg2" type="Button" parent="ui"]
 layout_mode = 2
@@ -133,8 +165,198 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_1l46r")
 theme_override_styles/hover = SubResource("StyleBoxFlat_032fp")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2fc2m")
-text = "Fireball Spell(Spell) 
-(30 Coins)"
+text = "
+
+"
+
+[node name="upg2cost" type="Label" parent="ui/upg2"]
+layout_mode = 0
+offset_left = 286.0
+offset_top = 36.0
+offset_right = 890.0
+offset_bottom = 80.0
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 30
+text = "30 coins"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="ui/upg2"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 0
+offset_left = 24.0
+offset_top = -2.0
+offset_right = 524.0
+offset_bottom = 118.0
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 30
+text = "Fireball Spell
+(Spell) -            
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="upg3" type="Button" parent="ui"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1l46r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_032fp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2fc2m")
+text = "
+
+"
+
+[node name="upg3cost" type="Label" parent="ui/upg3"]
+layout_mode = 0
+offset_left = 286.0
+offset_top = 36.0
+offset_right = 953.0
+offset_bottom = 80.0
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 30
+text = "40 coins"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="ui/upg3"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 0
+offset_left = 24.0
+offset_top = -8.0
+offset_right = 524.0
+offset_bottom = 83.0
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 30
+text = "Strength Increase(+5 Attack 
+Strength) -                "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Lvl5Overlay" type="Control" parent="ui/upg3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="ui/upg3/Lvl5Overlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.11366529, 0.11366529, 0.113665275, 1)
+
+[node name="Label" type="Label" parent="ui/upg3/Lvl5Overlay"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 0
+offset_left = 24.0
+offset_top = -8.0
+offset_right = 524.0
+offset_bottom = 83.0
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 30
+text = "Unlock at Level 5"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="upg4" type="Button" parent="ui"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1l46r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_032fp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2fc2m")
+text = "
+
+"
+
+[node name="upg4cost" type="Label" parent="ui/upg4"]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 36.0
+offset_right = 875.0
+offset_bottom = 80.0
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 30
+text = "100 coins"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="ui/upg4"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 0
+offset_left = 24.0
+offset_top = -2.0
+offset_right = 524.0
+offset_bottom = 118.0
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 30
+text = "Ice Blast Spell
+(Spell) -                
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Lvl5Overlay" type="Control" parent="ui/upg4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="ui/upg4/Lvl5Overlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.11366529, 0.11366529, 0.113665275, 1)
+
+[node name="Label" type="Label" parent="ui/upg4/Lvl5Overlay"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 0
+offset_left = 24.0
+offset_top = -8.0
+offset_right = 524.0
+offset_bottom = 83.0
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 30
+text = "Unlock at Level 5"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Background" type="Panel" parent="."]
 z_index = -2
@@ -167,3 +389,5 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_o6xl0")
 [connection signal="pressed" from="close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="ui/upg1" to="." method="_on_upg_1_pressed"]
 [connection signal="pressed" from="ui/upg2" to="." method="_on_upg_2_pressed"]
+[connection signal="pressed" from="ui/upg3" to="." method="_on_upg_3_pressed"]
+[connection signal="pressed" from="ui/upg4" to="." method="_on_upg_4_pressed"]

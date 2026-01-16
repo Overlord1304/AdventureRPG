@@ -236,6 +236,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="fireball" type="Button" parent="ui/spellselect/container"]
+visible = false
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
 size_flags_horizontal = 2
@@ -250,6 +251,7 @@ button_group = ExtResource("2_jyhfs")
 text = "Fireball"
 
 [node name="iceblast" type="Button" parent="ui/spellselect/container"]
+visible = false
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
 size_flags_horizontal = 2
@@ -296,3 +298,4 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_o6xl0")
 [connection signal="pressed" from="ui/HBoxContainer/shop" to="." method="_on_shop_pressed"]
 [connection signal="pressed" from="ui/HBoxContainer/castspell" to="." method="_on_castspell_pressed"]
 [connection signal="pressed" from="ui/spellselect/container/fireball" to="." method="_on_fireball_pressed"]
+[connection signal="pressed" from="ui/spellselect/container/iceblast" to="." method="_on_iceblast_pressed"]

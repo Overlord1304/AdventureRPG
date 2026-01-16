@@ -16,7 +16,12 @@ var saves = "user://saves.save"
 var sbol = true #startbattleonload
 var spell_selected = ""
 var sutf = false #spellusedthisfight
-
+var fball_bought = false
+var iblast_bought = false
+var upg1cost = 15
+var upg2cost = 30
+var upg3cost = 40
+var upg4cost = 100
 func save_game():
 	var data = {
 		"health": health,
@@ -27,27 +32,41 @@ func save_game():
 		"level": level,
 		"xp": xp,
 		"xp_needed": xp_needed,
-		"inventory": inventory
-	}
+		"inventory": inventory,
+		"fball_bought": fball_bought,
+		"upg1cost": upg1cost,
+		"upg2cost": upg2cost,
+		"upg3cost": upg3cost,
+		"upg4cost": upg4cost,
+		"iblast_bought": iblast_bought,
+		}
 	var file = FileAccess.open(saves,FileAccess.WRITE)
 	file.store_var(data)
 	file.close()
 func load_game():
-	if not FileAccess.file_exists(saves):
-		return false
-	var file = FileAccess.open(saves,FileAccess.READ)
-	var data = file.get_var()
-	file.close()
-	health = data.health
-	max_health = data.max_health
-	currency = data.currency
-	base_attack = data.base_attack
-	attack_bonus = data.attack_bonus
-	level = data.level
-	xp = data.xp
-	xp_needed = data.xp_needed
-	inventory = data.inventory
-	return true
+	if FileAccess.file_exists(saves):
+		var file = FileAccess.open(saves,FileAccess.READ)
+		var data = file.get_var()
+		file.close()
+		if typeof(data) == TYPE_DICTIONARY:
+			health = data.get("health",100)
+			max_health = data.get("max_health",100)
+			currency = data.get("currency",0)
+			base_attack = data.get("base_attack",10)
+			attack_bonus = data.get("attack_bonus",0)
+			level = data.get("level",1)
+			xp = data.get("xp",0)
+			xp_needed = data.get("xp_needed",50)
+			inventory = data.get("inventory",[])
+			fball_bought = data.get("fball_bought",false)
+			upg1cost = data.get("upg1cost",15)
+			upg2cost = data.get("upg2cost",30)
+			upg3cost = data.get("upg3cost",40)
+			upg4cost = data.get("upg4cost",100)
+			iblast_bought = data.get("iblast_bought",false)
+	else:
+		save_game()
+
 
 func reset_game():
 	health = 100
@@ -59,6 +78,11 @@ func reset_game():
 	xp_needed = 50
 	attack_bonus = 0
 	enemy_defeated = false
+	fball_bought = false
+	iblast_bought = false
 	inventory.clear()
+	upg1cost = 15
+	upg2cost = 30
+	upg3cost = 40
 	phase = game_phase.FIGHTING
 	DirAccess.remove_absolute(saves)
