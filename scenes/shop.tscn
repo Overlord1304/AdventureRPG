@@ -121,7 +121,20 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_1l46r")
 theme_override_styles/hover = SubResource("StyleBoxFlat_032fp")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2fc2m")
 text = "Strength Increase(+2 Attack 
-Strength (15 Coins)"
+Strength) (15 Coins)"
+
+[node name="upg2" type="Button" parent="ui"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1l46r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_032fp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2fc2m")
+text = "Fireball Spell(Spell) 
+(30 Coins)"
 
 [node name="Background" type="Panel" parent="."]
 z_index = -2
@@ -153,3 +166,4 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_o6xl0")
 
 [connection signal="pressed" from="close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="ui/upg1" to="." method="_on_upg_1_pressed"]
+[connection signal="pressed" from="ui/upg2" to="." method="_on_upg_2_pressed"]

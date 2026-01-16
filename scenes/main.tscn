@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bk0ytbb6gwecd"]
+[gd_scene load_steps=15 format=3 uid="uid://bk0ytbb6gwecd"]
 
 [ext_resource type="Script" uid="uid://c6h22hipvelmk" path="res://scripts/main.gd" id="1_0wfyh"]
+[ext_resource type="ButtonGroup" uid="uid://bpgo7fam45yg7" path="res://scenes/spell_group.tres" id="2_jyhfs"]
 [ext_resource type="FontFile" uid="uid://b1ecuue8wn2td" path="res://fonts/Fredoka-Regular.ttf" id="2_sugp2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyhfs"]
@@ -72,6 +73,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0wfyh")
+spell_group = ExtResource("2_jyhfs")
 
 [node name="ui" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -209,17 +211,12 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_choun")
 
-[node name="container" type="VBoxContainer" parent="ui/spellselect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="message" type="Label" parent="ui/spellselect/container"]
+[node name="title" type="Label" parent="ui/spellselect"]
 custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
+layout_mode = 0
+offset_left = 24.0
+offset_right = 524.0
+offset_bottom = 44.0
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_sugp2")
@@ -228,6 +225,43 @@ text = "Spells"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="container" type="VBoxContainer" parent="ui/spellselect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="fireball" type="Button" parent="ui/spellselect/container"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_sugp2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tbgi4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tipki")
+theme_override_styles/hover = SubResource("StyleBoxFlat_85g3d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0wfyh")
+toggle_mode = true
+button_group = ExtResource("2_jyhfs")
+text = "Fireball"
+
+[node name="iceblast" type="Button" parent="ui/spellselect/container"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_sugp2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tbgi4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tipki")
+theme_override_styles/hover = SubResource("StyleBoxFlat_85g3d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0wfyh")
+toggle_mode = true
+button_group = ExtResource("2_jyhfs")
+text = "Ice Blast"
 
 [node name="Background" type="Panel" parent="."]
 z_index = -2
@@ -260,3 +294,5 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_o6xl0")
 [connection signal="pressed" from="ui/HBoxContainer/attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="ui/HBoxContainer/heal" to="." method="_on_heal_pressed"]
 [connection signal="pressed" from="ui/HBoxContainer/shop" to="." method="_on_shop_pressed"]
+[connection signal="pressed" from="ui/HBoxContainer/castspell" to="." method="_on_castspell_pressed"]
+[connection signal="pressed" from="ui/spellselect/container/fireball" to="." method="_on_fireball_pressed"]

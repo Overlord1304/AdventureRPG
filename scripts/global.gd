@@ -13,7 +13,10 @@ var current_enemy = {}
 var enemy_defeated = false
 var inventory = []
 var saves = "user://saves.save"
-var sbol = true
+var sbol = true #startbattleonload
+var spell_selected = ""
+var sutf = false #spellusedthisfight
+
 func save_game():
 	var data = {
 		"health": health,
