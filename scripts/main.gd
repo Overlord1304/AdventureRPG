@@ -5,8 +5,47 @@ extends Control
 @export var spell_group: ButtonGroup
 var health_tween
 var displayed_health = 0
+var enemies = [
+	{
+		"name": "Goblin",
+		"min_level": 1,
+		"max_level": 4,
+		"health_mul": 1.0,
+		"attack_mul": 1.0
+	},
+	{
+		"name": "Orc",
+		"min_level": 3,
+		"max_level": 8,
+		"health_mul": 1.4,
+		"attack_mul": 1.3
+	},
+	{
+		"name": "Skeleton",
+		"min_level": 7,
+		"max_level": 99,
+		"health_mul": 1.2,
+		"attack_mul": 1.8
+	}
+]
+
+var bosses = [
+	{
+		"name": "Goblin Lord",
+		"min_level": 5,
+		"max_level": 9,
+		"health_mul": 1.5,
+		"attack_mul": 1.6
+	},
+	{
+		"name": "SKELLY",
+		"min_level": 10,
+		"max_level": 99,
+		"health_mul": 2.5,
+		"attack_mul": 2.0
+	}
+]
 func _ready():
-	print(Global.iblast_bought)
 	$ui/message.hide()
 	Global.load_game()
 	randomize()
@@ -30,20 +69,24 @@ func start_new_battle():
 		b.button_pressed = false
 	message_label.text = "An enemy appears, its a wild %s" % Global.current_enemy.name
 func is_boss_level():
-	return randf() < 0.2
+	if Global.level < 5:
+		return false
+	return Global.level % 5 == 0
 	
 func create_random_enemy():
+	var enemy_list = pick(enemies)
 	return {
-		"name": "Goblin",
-		"health": 30 + Global.level * 12,
-		"attack": 6 + Global.level * 3,
+		"name": enemy_list.name,
+		"health": int(ceil((30 + Global.level * 12) * enemy_list.health_mul)),
+		"attack": int(ceil((6 + Global.level * 3) * enemy_list.attack_mul)),
 		"is_boss": false,
 	}
 func create_boss():
+	var boss_list = pick(bosses)
 	return {
-		"name": "Dragon",
-		"health": int(ceil(30 + Global.level * 12*1.25)),
-		"attack": 6 + Global.level * 3*1.5,
+		"name": boss_list.name,
+		"health": int(ceil((30 + Global.level * 12) * boss_list.health_mul)),
+		"attack": int(ceil((6 + Global.level * 3) * boss_list.attack_mul)),
 		"is_boss": true,
 	}
 
@@ -190,3 +233,10 @@ func _on_castspell_pressed() -> void:
 
 func _on_iceblast_pressed() -> void:
 	select_spell("iceblast_spell")
+func pick(p):
+	var candidates = []
+	for e in p:
+		if Global.level >= e.min_level and Global.level <= e.max_level:
+			candidates.append(e)
+
+	return candidates.pick_random()
