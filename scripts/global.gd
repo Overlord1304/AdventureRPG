@@ -18,10 +18,16 @@ var spell_selected = ""
 var sutf = false #spellusedthisfight
 var fball_bought = false
 var iblast_bought = false
+var bos_bought = false
+var discharge_bought = false
 var upg1cost = 15
 var upg2cost = 30
 var upg3cost = 40
 var upg4cost = 100
+var upg5cost = 80
+var upg6cost = 220
+var upg7cost = 160
+var upg8cost = 750
 func save_game():
 	var data = {
 		"health": health,
@@ -39,6 +45,12 @@ func save_game():
 		"upg3cost": upg3cost,
 		"upg4cost": upg4cost,
 		"iblast_bought": iblast_bought,
+		"upg5cost": upg5cost,
+		"upg6cost": upg6cost,
+		"bos_bought": bos_bought,
+		"upg7cost": upg7cost,
+		"upg8cost": upg8cost,
+		"discharge_bought": discharge_bought,
 		}
 	var file = FileAccess.open(saves,FileAccess.WRITE)
 	file.store_var(data)
@@ -64,6 +76,12 @@ func load_game():
 			upg3cost = data.get("upg3cost",40)
 			upg4cost = data.get("upg4cost",100)
 			iblast_bought = data.get("iblast_bought",false)
+			upg5cost = data.get("upg5cost",80)
+			upg6cost = data.get("upg6cost",220)
+			bos_bought = data.get("bos_bought",false)
+			upg7cost = data.get("upg7cost",160)
+			upg8cost = data.get("upg8cost",750)
+			discharge_bought = data.get("discharge_bought",false)
 	else:
 		save_game()
 
@@ -80,9 +98,17 @@ func reset_game():
 	enemy_defeated = false
 	fball_bought = false
 	iblast_bought = false
+	bos_bought = false
+	discharge_bought = false
 	inventory.clear()
 	upg1cost = 15
 	upg2cost = 30
 	upg3cost = 40
+	upg4cost = 100
+	upg5cost = 80
+	upg6cost = 220
+	upg7cost = 160
+	upg8cost = 750
+	bos_bought = false
 	phase = game_phase.FIGHTING
 	DirAccess.remove_absolute(saves)

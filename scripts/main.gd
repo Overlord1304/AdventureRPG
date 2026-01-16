@@ -1,7 +1,7 @@
 extends Control
 
-@onready var message_label = $ui/message
-@onready var health_bar = $ui/HealthBar
+@onready var message_label = $s/ui/message
+@onready var health_bar = $s/ui/HealthBar
 @export var spell_group: ButtonGroup
 var health_tween
 var displayed_health = 0
@@ -11,42 +11,125 @@ var enemies = [
 		"min_level": 1,
 		"max_level": 4,
 		"health_mul": 1.0,
-		"attack_mul": 1.0
+		"attack_mul": 1.0,
+		"coin_mul": 1.0,
+		"xp_mul": 1.0
+	},
+	{
+		"name": "Bandit",
+		"min_level": 1,
+		"max_level": 4,
+		"health_mul": 0.8,
+		"attack_mult": 1.3,
+		"coin_mul": 1.0,
+		"xp_mul":1.0
 	},
 	{
 		"name": "Orc",
 		"min_level": 3,
 		"max_level": 8,
 		"health_mul": 1.4,
-		"attack_mul": 1.3
+		"attack_mul": 1.3,
+		"coin_mul": 1.2,
+		"xp_mul": 1.3
+	},
+	{
+		"name": "Vulture",
+		"min_level": 3,
+		"max_level": 8,
+		"health_mul": 1.3,
+		"attack_mul": 1.5,
+		"coin_mul": 1.3,
+		"xp_mul": 1.4
 	},
 	{
 		"name": "Skeleton",
 		"min_level": 7,
-		"max_level": 99,
+		"max_level": 14,
 		"health_mul": 1.2,
-		"attack_mul": 1.8
+		"attack_mul": 1.8,
+		"coin_mul": 1.5,
+		"xp_mul": 1.6,
+	},
+	{
+		"name": "Slime",
+		"min_level": 7,
+		"max_level": 14,
+		"health_mul": 1.5,
+		"attack_mul": 1.5,
+		"coin_mul": 1.6,
+		"xp_mul": 1.6,
+	},
+	{
+		"name": "Mech",
+		"min_level": 11,
+		"max_level": 19,
+		"health_mul": 2.3,
+		"attack_mul": 2.9,
+		"coin_mul": 2.0,
+		"xp_mul": 2.1
+	},
+	{
+		"name": "Shaman",
+		"min_level": 11,
+		"max_level": 19,
+		"health_mul": 2.0,
+		"attack_mul": 3.2,
+		"coin_mul": 2.1,
+		"xp_mul": 2.3
+	},
+	{
+		"name": "Armored Skeleton",
+		"min_level": 15,
+		"max_level": 24,
+		"health_mul": 3.5,
+		"attack_mul": 4.0,
+		"coin_mul": 4.0,
+		"xp_mul": 4.1,
+	},
+	{
+		"name": "Wraith",
+		"min_level": 15,
+		"max_level": 24,
+		"health_mul": 3.5,
+		"attack_mul": 4.3,
+		"coin_mul": 4.3,
+		"xp_mul": 4.4, 
 	}
+	
 ]
 
 var bosses = [
 	{
 		"name": "Goblin Lord",
 		"min_level": 5,
-		"max_level": 9,
+		"max_level": 14,
 		"health_mul": 1.5,
-		"attack_mul": 1.6
+		"attack_mul": 1.6,
+		"coin_mul": 2.0,
+		"xp_mul": 2.0
 	},
 	{
 		"name": "SKELLY",
-		"min_level": 10,
-		"max_level": 99,
-		"health_mul": 2.5,
-		"attack_mul": 2.0
+		"min_level": 15,
+		"max_level": 24,
+		"health_mul": 2.0,
+		"attack_mul": 2.5,
+		"coin_mul": 3.0,
+		"xp_mul": 3.5
+	},
+	{
+		"name": "M.E.C.H",
+		"min_level": 25,
+		"max_level": 34,
+		"health_mul": 5.0,
+		"attack_mul": 6.0,
+		"coin_mul": 7.0,
+		"xp_mul": 7.5
 	}
 ]
 func _ready():
-	$ui/message.hide()
+	$s/ui/message.hide()
 	Global.load_game()
 	randomize()
 	displayed_health = Global.health
@@ -54,9 +137,13 @@ func _ready():
 	if Global.sbol:
 		start_new_battle()
 	if Global.fball_bought:
-		$ui/spellselect/container/fireball.show()
+		$s/ui/spellselect/container/fireball.show()
 	if Global.iblast_bought:
-		$ui/spellselect/container/iceblast.show()
+		$s/ui/spellselect/container/iceblast.show()
+	if Global.bos_bought:
+		$s/ui/spellselect/container/baneofskeletons.show()
+	if Global.discharge_bought:
+		$s/ui/spellselect/container/discharge.show()
 	update_ui()
 
 func start_new_battle():
@@ -64,14 +151,14 @@ func start_new_battle():
 	Global.phase = Global.game_phase.FIGHTING
 	Global.sutf = false
 	Global.current_enemy = create_boss() if is_boss_level() else create_random_enemy()
-	$ui/message.show()
+	$s/ui/message.show()
 	for b in spell_group.get_buttons():
 		b.button_pressed = false
 	message_label.text = "An enemy appears, its a wild %s" % Global.current_enemy.name
 func is_boss_level():
 	if Global.level < 5:
 		return false
-	return Global.level % 5 == 0
+	return randi() % 5 == 0
 	
 func create_random_enemy():
 	var enemy_list = pick(enemies)
@@ -79,6 +166,8 @@ func create_random_enemy():
 		"name": enemy_list.name,
 		"health": int(ceil((30 + Global.level * 12) * enemy_list.health_mul)),
 		"attack": int(ceil((6 + Global.level * 3) * enemy_list.attack_mul)),
+		"coin_mul": enemy_list.coin_mul,
+		"xp_mul": enemy_list.xp_mul,
 		"is_boss": false,
 	}
 func create_boss():
@@ -87,6 +176,8 @@ func create_boss():
 		"name": boss_list.name,
 		"health": int(ceil((30 + Global.level * 12) * boss_list.health_mul)),
 		"attack": int(ceil((6 + Global.level * 3) * boss_list.attack_mul)),
+		"coin_mul": boss_list.coin_mul,
+		"xp_mul": boss_list.xp_mul,
 		"is_boss": true,
 	}
 
@@ -116,11 +207,11 @@ func enemy_attack():
 func win_battle():
 	Global.enemy_defeated = true
 	Global.phase = Global.game_phase.VICTORY
-	var coins_gain = 10 + Global.level * 2
-	var xp_gain = 20 + Global.level * 5
-	if Global.current_enemy.is_boss:
-		coins_gain *= 2
-		xp_gain *= 2
+	var base_coins_gain = 10 + Global.level * 2
+	var base_xp_gain = 20 + Global.level * 5
+	var coins_gain = int(base_coins_gain * Global.current_enemy.coin_mul)
+	var xp_gain = int(base_xp_gain * Global.current_enemy.xp_mul)
+
 	Global.currency += coins_gain
 	Global.xp += xp_gain
 	
@@ -140,15 +231,15 @@ func check_level_up():
 		message_label.text += " Level Up!"
 		Global.save_game()
 func update_ui():
-	$ui/stats/level.text = "Level: %d" % Global.level
-	$ui/stats/currency.text = "Coins: %d" % Global.currency
-	$ui/stats/astrength.text = "Attack: %d" % (Global.base_attack+Global.attack_bonus)
-	$ui/health.text = "Health: %d" % Global.health
+	$s/ui/stats/level.text = "Level: %d" % Global.level
+	$s/ui/stats/currency.text = "Coins: %d" % Global.currency
+	$s/ui/stats/astrength.text = "Attack: %d" % (Global.base_attack+Global.attack_bonus)
+	$s/ui/health.text = "Health: %d" % Global.health
 	health_bar.max_value = Global.max_health
 	animate_hb(Global.health)
-	$ui/HBoxContainer/castspell.visible = has_spell()
-	$ui/spellselect.visible = has_spell()
-	$ui/HBoxContainer/heal.disabled = (
+	$s/ui/HBoxContainer/castspell.visible = has_spell()
+	$s/ui/spellselect.visible = has_spell()
+	$s/ui/HBoxContainer/heal.disabled = (
 		Global.phase == Global.game_phase.FIGHTING
 		and not Global.enemy_defeated
 	)
@@ -214,6 +305,10 @@ func cast_spell():
 			dmg = 40
 		"iceblast_spell":
 			dmg = 75
+		"bos_spell":
+			dmg = 200
+		"discharge_spell":
+			dmg = 500
 	Global.current_enemy.health -= dmg
 	message_label.text = "You cast %s for %d damage" %[Global.spell_selected,dmg]
 	Global.sutf = true
@@ -240,3 +335,11 @@ func pick(p):
 			candidates.append(e)
 
 	return candidates.pick_random()
+
+
+func _on_baneofskeletons_pressed() -> void:
+	select_spell("bos_spell")
+
+
+func _on_discharge_pressed() -> void:
+	select_spell("discharge_spell")
