@@ -2,14 +2,16 @@ extends Node
 enum game_phase {FIGHTING,VICTORY,GAME_OVER}
 var phase = game_phase.FIGHTING
 var health = 100
-var max_health = 750 
+var max_health = 100 
 var currency = 0
-var base_attack = 530
-var level = 20
+var base_attack = 100
+var level = 1
 var xp = 0
+var coin_bonus_mul = 1
+var xp_bonus_mul = 1
 var xp_needed = 50
 var attack_bonus = 0
-var current_enemy = {}vvrvrvvr
+var current_enemy = {}
 var enemy_defeated = false
 var inventory = []
 var saves = "user://saves.save"
@@ -20,6 +22,8 @@ var fball_bought = false
 var iblast_bought = false
 var bos_bought = false
 var discharge_bought = false
+var wfire_bought = false
+var lootupg1_bought = false
 var upg1cost = 15
 var upg2cost = 30
 var upg3cost = 40
@@ -29,30 +33,38 @@ var upg6cost = 220
 var upg7cost = 160
 var upg8cost = 750
 var upg9cost = 800
+var upg10cost = 2000
+var upg11cost = 3000
 func save_game():
 	var data = {
-		"health": health,
-		"max_health": max_health,
-		"currency": currency,
-		"base_attack": base_attack,
-		"attack_bonus": attack_bonus,
-		"level": level,
-		"xp": xp,
-		"xp_needed": xp_needed,
-		"inventory": inventory,
-		"fball_bought": fball_bought,
-		"upg1cost": upg1cost,
-		"upg2cost": upg2cost,
-		"upg3cost": upg3cost,
-		"upg4cost": upg4cost,
-		"iblast_bought": iblast_bought,
-		"upg5cost": upg5cost,
-		"upg6cost": upg6cost,
-		"bos_bought": bos_bought,
-		"upg7cost": upg7cost,
-		"upg8cost": upg8cost,
-		"upg9cost": upg9cost,
-		"discharge_bought": discharge_bought,
+			"health": health,
+			"max_health": max_health,
+			"currency": currency,
+			"base_attack": base_attack,
+			"attack_bonus": attack_bonus,
+			"level": level,
+			"xp": xp,
+			"xp_needed": xp_needed,
+			"inventory": inventory,
+			"fball_bought": fball_bought,
+			"upg1cost": upg1cost,
+			"upg2cost": upg2cost,
+			"upg3cost": upg3cost,
+			"upg4cost": upg4cost,
+			"iblast_bought": iblast_bought,
+			"upg5cost": upg5cost,
+			"upg6cost": upg6cost,
+			"bos_bought": bos_bought,
+			"upg7cost": upg7cost,
+			"upg8cost": upg8cost,
+			"upg9cost": upg9cost,
+			"discharge_bought": discharge_bought,
+			"upg10cost": upg10cost,
+			"wfire_bought": wfire_bought,
+			"upg11cost": upg11cost,
+			"lootupg1_bought": lootupg1_bought,
+			"coin_bonus_mul": coin_bonus_mul,
+			"xp_bonus_mul": xp_bonus_mul,
 		}
 	var file = FileAccess.open(saves,FileAccess.WRITE)
 	file.store_var(data)
@@ -85,6 +97,12 @@ func load_game():
 			upg8cost = data.get("upg8cost",750)
 			upg9cost = data.get("upg9cost",800)
 			discharge_bought = data.get("discharge_bought",false)
+			upg10cost = data.get("upg10cost",2000)
+			wfire_bought = data.get("wfire_bought",false)
+			upg11cost = data.get("upg11cost",3000)
+			lootupg1_bought = data.get("lootupg1_bought",false)
+			coin_bonus_mul = data.get("coin_bonus_mul",1)
+			xp_bonus_mul = data.get("xp_bonus_mul",1)
 	else:
 		save_game()
 
@@ -103,6 +121,8 @@ func reset_game():
 	iblast_bought = false
 	bos_bought = false
 	discharge_bought = false
+	wfire_bought = false
+	lootupg1_bought = false
 	inventory.clear()
 	upg1cost = 15
 	upg2cost = 30
@@ -113,6 +133,9 @@ func reset_game():
 	upg7cost = 160
 	upg8cost = 750
 	upg9cost = 800
-	bos_bought = false
+	upg10cost = 2000
+	upg11cost = 3000
+	coin_bonus_mul = 1
+	xp_bonus_mul = 1
 	phase = game_phase.FIGHTING
 	DirAccess.remove_absolute(saves)

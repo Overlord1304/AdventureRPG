@@ -144,6 +144,9 @@ func _ready():
 		$s/ui/spellselect/container/baneofskeletons.show()
 	if Global.discharge_bought:
 		$s/ui/spellselect/container/discharge.show()
+	if Global.wfire_bought:
+		$s/ui/spellselect/container/wraithfire.show()
+	
 	update_ui()
 func _process(delta):
 	if Global.spell_selected == "":
@@ -213,8 +216,8 @@ func win_battle():
 	Global.phase = Global.game_phase.VICTORY
 	var base_coins_gain = 10 + Global.level * 2
 	var base_xp_gain = 20 + Global.level * 5
-	var coins_gain = int(base_coins_gain * Global.current_enemy["coin_mul"])
-	var xp_gain = int(base_xp_gain * Global.current_enemy["xp_mul"])
+	var coins_gain = int(base_coins_gain * Global.current_enemy["coin_mul"]* Global.coin_bonus_mul)
+	var xp_gain = int(base_xp_gain * Global.current_enemy["xp_mul"] * Global.xp_bonus_mul)
 
 	Global.currency += coins_gain
 	Global.xp += xp_gain
@@ -322,6 +325,8 @@ func cast_spell():
 			dmg = 200
 		"discharge_spell":
 			dmg = 400
+		"wraithfire_spell":
+			dmg = 800
 	Global.current_enemy["health"] -= dmg
 	message_label.text = "You cast %s for %d damage" %[Global.spell_selected,dmg]
 	Global.sutf = true
@@ -360,3 +365,7 @@ func _on_discharge_pressed() -> void:
 
 func _on_restart_pressed() -> void:
 	get_tree().reload_current_scene()
+
+
+func _on_wraithfire_pressed() -> void:
+	select_spell("wraithfire_spell")

@@ -11,6 +11,8 @@ func _ready():
 		$s/ui/upg6.disabled = true
 	if Global.discharge_bought:
 		$s/ui/upg8.disabled = true
+	if Global.wfire_bought:
+		$s/ui/upg10.disabled = true
 	$s/ui/upg1/upg1cost.text = "%d Coins" % Global.upg1cost
 	$s/ui/upg2/upg2cost.text = "%d Coins" % Global.upg2cost
 	$s/ui/upg3/upg3cost.text = "%d Coins" % Global.upg3cost
@@ -20,6 +22,8 @@ func _ready():
 	$s/ui/upg7/upg7cost.text = "%d Coins" % Global.upg7cost
 	$s/ui/upg8/upg8cost.text = "%d Coins" % Global.upg8cost
 	$s/ui/upg9/upg9cost.text = "%d Coins" % Global.upg9cost
+	$s/ui/upg10/upg10cost.text = "%d Coins" % Global.upg10cost
+	$s/ui/upg11/upg11cost.text = "%d Coins" % Global.upg11cost
 	if Global.level >= 5:
 		$s/ui/upg3/Lvl5Overlay.hide()
 		$s/ui/upg4/Lvl5Overlay.hide()
@@ -31,6 +35,8 @@ func _ready():
 		$s/ui/upg8/Lvl15Overlay.hide()
 	if Global.level >= 20:
 		$s/ui/upg9/Lvl20Overlay.hide()
+		$s/ui/upg10/Lvl20Overlay.hide()
+		$s/ui/upg11/Lvl20Overlay.hide()
 func _on_upg_1_pressed() -> void:
 	if Global.currency < Global.upg1cost:
 		message_label.text = "Not enough coins!"
@@ -58,8 +64,7 @@ func _on_upg_2_pressed() -> void:
 		Global.inventory.append("fireball_spell")
 	Global.save_game()
 	message_label.text = "You gained a new spell"
-	if Global.fball_bought:
-		$s/ui/upg2.disabled = true
+	$s/ui/upg2.disabled = true
 
 
 func _on_upg_3_pressed() -> void:
@@ -85,8 +90,7 @@ func _on_upg_4_pressed() -> void:
 		Global.inventory.append("iceblast_spell")
 	Global.save_game()
 	message_label.text = "You gained a new spell"
-	if Global.iblast_bought:
-		$s/ui/upg4.disabled = true
+	$s/ui/upg4.disabled = true
 
 
 func _on_upg_5_pressed() -> void:
@@ -112,8 +116,7 @@ func _on_upg_6_pressed() -> void:
 		Global.inventory.append("bos_spell")
 	Global.save_game()
 	message_label.text = "You gained a new spell"
-	if Global.bos_bought:
-		$s/ui/upg6.disabled = true
+	$s/ui/upg6.disabled = true
 
 
 func _on_upg_7_pressed() -> void:
@@ -139,8 +142,7 @@ func _on_upg_8_pressed() -> void:
 		Global.inventory.append("discharge_spell")
 	Global.save_game()
 	message_label.text = "You gained a new spell"
-	if Global.discharge_bought:
-		$s/ui/upg8.disabled = true
+	$s/ui/upg8.disabled = true
 
 
 func _on_upg_9_pressed() -> void:
@@ -153,3 +155,32 @@ func _on_upg_9_pressed() -> void:
 	Global.save_game()
 	$s/ui/upg9/upg9cost.text = "%d Coins" % Global.upg9cost
 	message_label.text = "You gained 100 attack strength"
+
+
+func _on_upg_10_pressed() -> void:
+	Global.wfire_bought = true
+	
+	if Global.currency < Global.upg10cost:
+		message_label.text = "Not enough coins!"
+		return
+	Global.currency -= Global.upg10cost
+	if "wraithfire_spell" not in Global.inventory:
+		Global.inventory.append("wraithfire_spell")
+	Global.save_game()
+	message_label.text = "You gained a new spell"
+	$s/ui/upg10.disabled = true
+
+
+func _on_upg_11_pressed() -> void:
+	Global.lootupg1_bought = true
+	
+	if Global.currency < Global.upg11cost:
+		message_label.text = "Not enough coins!"
+		return
+	Global.currency -= Global.upg11cost
+	Global.coin_bonus_mul *= 1.2
+	Global.xp_bonus_mul *= 1.2
+	Global.save_game()
+	message_label.text = "Coins and xp gain increased by 20%"
+	
+	$s/ui/upg11.disabled = true
