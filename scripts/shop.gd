@@ -1,7 +1,6 @@
 extends Control
 @onready var message_label = $s/ui/message
 @onready var close = $close
-
 func _ready():
 	message_label.text = "Welcome to the shop!"
 	if Global.fball_bought:
@@ -20,6 +19,7 @@ func _ready():
 	$s/ui/upg6/upg6cost.text = "%d Coins" % Global.upg6cost
 	$s/ui/upg7/upg7cost.text = "%d Coins" % Global.upg7cost
 	$s/ui/upg8/upg8cost.text = "%d Coins" % Global.upg8cost
+	$s/ui/upg9/upg9cost.text = "%d Coins" % Global.upg9cost
 	if Global.level >= 5:
 		$s/ui/upg3/Lvl5Overlay.hide()
 		$s/ui/upg4/Lvl5Overlay.hide()
@@ -29,6 +29,8 @@ func _ready():
 	if Global.level >= 15:
 		$s/ui/upg7/Lvl15Overlay.hide()
 		$s/ui/upg8/Lvl15Overlay.hide()
+	if Global.level >= 20:
+		$s/ui/upg9/Lvl20Overlay.hide()
 func _on_upg_1_pressed() -> void:
 	if Global.currency < Global.upg1cost:
 		message_label.text = "Not enough coins!"
@@ -139,3 +141,15 @@ func _on_upg_8_pressed() -> void:
 	message_label.text = "You gained a new spell"
 	if Global.discharge_bought:
 		$s/ui/upg8.disabled = true
+
+
+func _on_upg_9_pressed() -> void:
+	if Global.currency < Global.upg9cost:
+		message_label.text = "Not enough coins!"
+		return
+	Global.currency -= Global.upg9cost
+	Global.upg9cost = int(ceil(Global.upg9cost * 1.15))
+	Global.attack_bonus += 100
+	Global.save_game()
+	$s/ui/upg9/upg9cost.text = "%d Coins" % Global.upg9cost
+	message_label.text = "You gained 100 attack strength"

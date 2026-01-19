@@ -2,14 +2,14 @@ extends Node
 enum game_phase {FIGHTING,VICTORY,GAME_OVER}
 var phase = game_phase.FIGHTING
 var health = 100
-var max_health = 100 
+var max_health = 750 
 var currency = 0
-var base_attack = 10
-var level = 1
+var base_attack = 530
+var level = 20
 var xp = 0
 var xp_needed = 50
 var attack_bonus = 0
-var current_enemy = {}
+var current_enemy = {}vvrvrvvr
 var enemy_defeated = false
 var inventory = []
 var saves = "user://saves.save"
@@ -28,6 +28,7 @@ var upg5cost = 80
 var upg6cost = 220
 var upg7cost = 160
 var upg8cost = 750
+var upg9cost = 800
 func save_game():
 	var data = {
 		"health": health,
@@ -50,6 +51,7 @@ func save_game():
 		"bos_bought": bos_bought,
 		"upg7cost": upg7cost,
 		"upg8cost": upg8cost,
+		"upg9cost": upg9cost,
 		"discharge_bought": discharge_bought,
 		}
 	var file = FileAccess.open(saves,FileAccess.WRITE)
@@ -81,6 +83,7 @@ func load_game():
 			bos_bought = data.get("bos_bought",false)
 			upg7cost = data.get("upg7cost",160)
 			upg8cost = data.get("upg8cost",750)
+			upg9cost = data.get("upg9cost",800)
 			discharge_bought = data.get("discharge_bought",false)
 	else:
 		save_game()
@@ -109,6 +112,7 @@ func reset_game():
 	upg6cost = 220
 	upg7cost = 160
 	upg8cost = 750
+	upg9cost = 800
 	bos_bought = false
 	phase = game_phase.FIGHTING
 	DirAccess.remove_absolute(saves)

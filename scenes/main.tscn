@@ -186,6 +186,19 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="Restart" type="Button" parent="s/ui"]
+visible = false
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_sugp2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tbgi4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tipki")
+theme_override_styles/hover = SubResource("StyleBoxFlat_85g3d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0wfyh")
+text = "Restart"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="s/ui"]
 layout_mode = 2
 
@@ -269,6 +282,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="fireball" type="Button" parent="s/ui/spellselect/container"]
+visible = false
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
 theme_override_constants/outline_size = 3
@@ -282,6 +296,7 @@ button_group = ExtResource("2_jyhfs")
 text = "Fireball"
 
 [node name="iceblast" type="Button" parent="s/ui/spellselect/container"]
+visible = false
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
 theme_override_constants/outline_size = 3
@@ -295,6 +310,7 @@ button_group = ExtResource("2_jyhfs")
 text = "Ice Blast"
 
 [node name="baneofskeletons" type="Button" parent="s/ui/spellselect/container"]
+visible = false
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
 theme_override_constants/outline_size = 3
@@ -321,6 +337,7 @@ toggle_mode = true
 button_group = ExtResource("2_jyhfs")
 text = "Discharge"
 
+[connection signal="pressed" from="s/ui/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="s/ui/HBoxContainer/attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="s/ui/HBoxContainer/heal" to="." method="_on_heal_pressed"]
 [connection signal="pressed" from="s/ui/HBoxContainer/shop" to="." method="_on_shop_pressed"]
