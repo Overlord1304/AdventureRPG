@@ -35,6 +35,7 @@ var upg8cost = 750
 var upg9cost = 800
 var upg10cost = 2000
 var upg11cost = 3000
+var upg12cost = 10000
 func save_game():
 	var data = {
 			"health": health,
@@ -65,6 +66,7 @@ func save_game():
 			"lootupg1_bought": lootupg1_bought,
 			"coin_bonus_mul": coin_bonus_mul,
 			"xp_bonus_mul": xp_bonus_mul,
+			"upg12cost" : upg12cost,
 		}
 	var file = FileAccess.open(saves,FileAccess.WRITE)
 	file.store_var(data)
@@ -103,6 +105,7 @@ func load_game():
 			lootupg1_bought = data.get("lootupg1_bought",false)
 			coin_bonus_mul = data.get("coin_bonus_mul",1)
 			xp_bonus_mul = data.get("xp_bonus_mul",1)
+			upg12cost = data.get("upg12cost",10000)
 	else:
 		save_game()
 
@@ -135,7 +138,25 @@ func reset_game():
 	upg9cost = 800
 	upg10cost = 2000
 	upg11cost = 3000
+	upg12cost = 10000
 	coin_bonus_mul = 1
 	xp_bonus_mul = 1
 	phase = game_phase.FIGHTING
 	DirAccess.remove_absolute(saves)
+func format_number(n):
+	if n < 1000:
+		return str(int(round(n)))
+
+	var suffixes = ["", "K", "M", "B", "T", "Q"]
+	var tier = int(floor(log(n) / log(1000)))
+	tier = min(tier, suffixes.size() - 1)
+
+	var scaled = n / pow(1000, tier)
+
+	var text := ""
+	if scaled < 10:
+		text = str(round(scaled * 10) / 10.0)
+	else:
+		text = str(int(round(scaled)))
+
+	return text + suffixes[tier]

@@ -13,17 +13,18 @@ func _ready():
 		$s/ui/upg8.disabled = true
 	if Global.wfire_bought:
 		$s/ui/upg10.disabled = true
-	$s/ui/upg1/upg1cost.text = "%d Coins" % Global.upg1cost
-	$s/ui/upg2/upg2cost.text = "%d Coins" % Global.upg2cost
-	$s/ui/upg3/upg3cost.text = "%d Coins" % Global.upg3cost
-	$s/ui/upg4/upg4cost.text = "%d Coins" % Global.upg4cost
-	$s/ui/upg5/upg5cost.text = "%d Coins" % Global.upg5cost
-	$s/ui/upg6/upg6cost.text = "%d Coins" % Global.upg6cost
-	$s/ui/upg7/upg7cost.text = "%d Coins" % Global.upg7cost
-	$s/ui/upg8/upg8cost.text = "%d Coins" % Global.upg8cost
-	$s/ui/upg9/upg9cost.text = "%d Coins" % Global.upg9cost
-	$s/ui/upg10/upg10cost.text = "%d Coins" % Global.upg10cost
-	$s/ui/upg11/upg11cost.text = "%d Coins" % Global.upg11cost
+	$s/ui/upg1/upg1cost.text = "%s Coins" % Global.format_number(Global.upg1cost)
+	$s/ui/upg2/upg2cost.text = "%s Coins" % Global.format_number(Global.upg2cost)
+	$s/ui/upg3/upg3cost.text = "%s Coins" % Global.format_number(Global.upg3cost)
+	$s/ui/upg4/upg4cost.text = "%s Coins" % Global.format_number(Global.upg4cost)
+	$s/ui/upg5/upg5cost.text = "%s Coins" % Global.format_number(Global.upg5cost)
+	$s/ui/upg6/upg6cost.text = "%s Coins" % Global.format_number(Global.upg6cost)
+	$s/ui/upg7/upg7cost.text = "%s Coins" % Global.format_number(Global.upg7cost)
+	$s/ui/upg8/upg8cost.text = "%s Coins" % Global.format_number(Global.upg8cost)
+	$s/ui/upg9/upg9cost.text = "%s Coins" % Global.format_number(Global.upg9cost)
+	$s/ui/upg10/upg10cost.text = "%s Coins" % Global.format_number(Global.upg10cost)
+	$s/ui/upg11/upg11cost.text = "%s Coins" % Global.format_number(Global.upg11cost)
+	$s/ui/upg12/upg12cost.text = "%s Coins" % Global.format_number(Global.upg12cost)
 	if Global.level >= 5:
 		$s/ui/upg3/Lvl5Overlay.hide()
 		$s/ui/upg4/Lvl5Overlay.hide()
@@ -37,6 +38,8 @@ func _ready():
 		$s/ui/upg9/Lvl20Overlay.hide()
 		$s/ui/upg10/Lvl20Overlay.hide()
 		$s/ui/upg11/Lvl20Overlay.hide()
+	if Global.level >= 25:
+		$s/ui/upg12/Lvl25Overlay.hide()
 func _on_upg_1_pressed() -> void:
 	if Global.currency < Global.upg1cost:
 		message_label.text = "Not enough coins!"
@@ -184,3 +187,15 @@ func _on_upg_11_pressed() -> void:
 	message_label.text = "Coins and xp gain increased by 20%"
 	
 	$s/ui/upg11.disabled = true
+
+
+func _on_upg_12_pressed() -> void:
+	if Global.currency < Global.upg12cost:
+		message_label.text = "Not enough coins!"
+		return
+	Global.currency -= Global.upg12cost
+	Global.upg12cost = int(ceil(Global.upg12cost * 1.15))
+	Global.attack_bonus += 500
+	Global.save_game()
+	$s/ui/upg12/upg12cost.text = "%d Coins" % Global.upg12cost
+	message_label.text = "You gained 500 attack strength"

@@ -95,8 +95,25 @@ var enemies = [
 		"attack_mul": 3.0,
 		"coin_mul": 4.0,
 		"xp_mul": 4.1
+	},
+	{
+		"name": "Ogre",
+		"min_level": 25,
+		"max_level": 29,
+		"health_mul": 2.6,
+		"attack_mul": 3.2,
+		"coin_mul": 4.2,
+		"xp_mul": 4.3
+	},
+	{
+		"name": "Golem",
+		"min_level": 25,
+		"max_level": 29,
+		"health_mul": 2.7,
+		"attack_mul": 3.1,
+		"coin_mul": 4.3,
+		"xp_mul": 4.2
 	}
-	
 ]
 
 var bosses = [
@@ -126,6 +143,15 @@ var bosses = [
 		"attack_mul": 3.5,
 		"coin_mul": 7.0,
 		"xp_mul": 7.5
+	},
+	{
+		"name": "SKELLY V2",
+		"min_level": 25,
+		"max_level": 29,
+		"health_mul": 6.0,
+		"attack_mul": 4.0,
+		"coin_mul": 8.0,
+		"xp_mul": 8.5
 	}
 ]
 func _ready():
@@ -200,7 +226,7 @@ func _on_attack_pressed() -> void:
 func player_attack():
 	var dmg = Global.base_attack + Global.attack_bonus
 	Global.current_enemy["health"] -= dmg
-	message_label.text = "You dealt %d damage." % dmg
+	message_label.text = "You dealt %s damage." % Global.format_number(dmg)
 	if Global.current_enemy["health"] <= 0:
 		win_battle()
 	else:
@@ -208,7 +234,7 @@ func player_attack():
 func enemy_attack():
 	var dmg = Global.current_enemy["attack"]
 	Global.health -= dmg
-	message_label.text = "It hits you for %d, it has %d health left" % [dmg,Global.current_enemy["health"]]
+	message_label.text = "It hits you for %s, it has %s health left" % [Global.format_number(dmg),Global.format_number(Global.current_enemy["health"])]
 	if Global.health <= 0:
 		game_over()
 func win_battle():
@@ -222,7 +248,7 @@ func win_battle():
 	Global.currency += coins_gain
 	Global.xp += xp_gain
 	
-	message_label.text =  "Enemy defeated! +%d coins, +%d XP" % [coins_gain, xp_gain]
+	message_label.text =  "Enemy defeated! +%s coins, +%s XP" % [Global.format_number(coins_gain), Global.format_number(xp_gain)]
 	check_level_up()
 	Global.save_game()
 func check_level_up():
@@ -238,10 +264,10 @@ func check_level_up():
 		message_label.text += " Level Up!"
 		Global.save_game()
 func update_ui():
-	$s/ui/stats/level.text = "Level %d: (%d/%d XP)" % [Global.level,Global.xp,Global.xp_needed] 
-	$s/ui/stats/currency.text = "Coins: %d" % Global.currency
-	$s/ui/stats/astrength.text = "Attack: %d" % (Global.base_attack+Global.attack_bonus)
-	$s/ui/health.text = "Health: %d" % Global.health
+	$s/ui/stats/level.text = "Level %s: (%s/%s XP)" % [Global.format_number(Global.level),Global.format_number(Global.xp),Global.format_number(Global.xp_needed)] 
+	$s/ui/stats/currency.text = "Coins: %s" % Global.format_number(Global.currency)
+	$s/ui/stats/astrength.text = "Attack: %s" % Global.format_number((Global.base_attack+Global.attack_bonus))
+	$s/ui/health.text = "Health: %s" % Global.format_number(Global.health)
 	health_bar.max_value = Global.max_health
 	animate_hb(Global.health)
 	$s/ui/HBoxContainer/castspell.visible = has_spell()
@@ -328,7 +354,7 @@ func cast_spell():
 		"wraithfire_spell":
 			dmg = 800
 	Global.current_enemy["health"] -= dmg
-	message_label.text = "You cast %s for %d damage" %[Global.spell_selected,dmg]
+	message_label.text = "You cast %s for %s damage" %[Global.spell_selected,Global.format_number(dmg)]
 	Global.sutf = true
 	for b in spell_group.get_buttons():
 		b.button_pressed = false
