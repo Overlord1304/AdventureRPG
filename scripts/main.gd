@@ -81,7 +81,7 @@ var enemies = [
 	{
 		"name": "Armored Skeleton",
 		"min_level": 18,
-		"max_level": 24,
+		"max_level": 25,
 		"health_mul": 2.4,
 		"attack_mul": 3.0,
 		"coin_mul": 4.0,
@@ -90,7 +90,7 @@ var enemies = [
 	{
 		"name": "Wraith",
 		"min_level": 18,
-		"max_level": 24,
+		"max_level": 25,
 		"health_mul": 2.4,
 		"attack_mul": 3.0,
 		"coin_mul": 4.0,
@@ -98,20 +98,20 @@ var enemies = [
 	},
 	{
 		"name": "Ogre",
-		"min_level": 25,
+		"min_level": 26,
 		"max_level": 29,
-		"health_mul": 2.6,
+		"health_mul": 5.0,
 		"attack_mul": 3.2,
-		"coin_mul": 4.2,
+		"coin_mul": 5.5,
 		"xp_mul": 4.3
 	},
 	{
 		"name": "Golem",
-		"min_level": 25,
+		"min_level": 26,
 		"max_level": 29,
-		"health_mul": 2.7,
+		"health_mul": 5.1,
 		"attack_mul": 3.1,
-		"coin_mul": 4.3,
+		"coin_mul": 5.5,
 		"xp_mul": 4.2
 	}
 ]
@@ -139,9 +139,9 @@ var bosses = [
 		"name": "M.E.C.H",
 		"min_level": 21,
 		"max_level": 24,
-		"health_mul": 5.0,
+		"health_mul": 4.0,
 		"attack_mul": 3.5,
-		"coin_mul": 7.0,
+		"coin_mul": 9.0,
 		"xp_mul": 7.5
 	},
 	{
@@ -150,7 +150,7 @@ var bosses = [
 		"max_level": 29,
 		"health_mul": 6.0,
 		"attack_mul": 4.0,
-		"coin_mul": 8.0,
+		"coin_mul": 12.0,
 		"xp_mul": 8.5
 	}
 ]
@@ -172,6 +172,8 @@ func _ready():
 		$s/ui/spellselect/container/discharge.show()
 	if Global.wfire_bought:
 		$s/ui/spellselect/container/wraithfire.show()
+	if Global.cquake_bought:
+		$s/ui/spellselect/container/cosmicquake.show()
 	
 	update_ui()
 func _process(delta):
@@ -255,7 +257,7 @@ func check_level_up():
 	while Global.xp >= Global.xp_needed:
 		Global.xp -= Global.xp_needed
 		Global.level += 1
-		Global.xp_needed = int(Global.xp_needed * 1.25)
+		Global.xp_needed = int(Global.xp_needed * 1.75)
 
 		Global.max_health += 10
 		Global.base_attack += 2
@@ -353,6 +355,8 @@ func cast_spell():
 			dmg = 400
 		"wraithfire_spell":
 			dmg = 800
+		"cosmicquake_spell":
+			dmg = 1500
 	Global.current_enemy["health"] -= dmg
 	message_label.text = "You cast %s for %s damage" %[Global.spell_selected,Global.format_number(dmg)]
 	Global.sutf = true
@@ -395,3 +399,7 @@ func _on_restart_pressed() -> void:
 
 func _on_wraithfire_pressed() -> void:
 	select_spell("wraithfire_spell")
+
+
+func _on_cosmicquake_pressed() -> void:
+	select_spell("cosmicquake_spell")

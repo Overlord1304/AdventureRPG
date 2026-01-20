@@ -23,7 +23,9 @@ var iblast_bought = false
 var bos_bought = false
 var discharge_bought = false
 var wfire_bought = false
+var cquake_bought = false
 var lootupg1_bought = false
+var lootupg2_bought = false
 var upg1cost = 15
 var upg2cost = 30
 var upg3cost = 40
@@ -36,6 +38,8 @@ var upg9cost = 800
 var upg10cost = 2000
 var upg11cost = 3000
 var upg12cost = 10000
+var upg13cost = 15000
+var upg14cost = 12000
 func save_game():
 	var data = {
 			"health": health,
@@ -67,6 +71,10 @@ func save_game():
 			"coin_bonus_mul": coin_bonus_mul,
 			"xp_bonus_mul": xp_bonus_mul,
 			"upg12cost" : upg12cost,
+			"upg13cost" : upg12cost,
+			"cquake_bought" : cquake_bought,
+			"upg14cost": upg14cost,
+			"lootupg2cost" : lootupg2_bought,
 		}
 	var file = FileAccess.open(saves,FileAccess.WRITE)
 	file.store_var(data)
@@ -106,6 +114,10 @@ func load_game():
 			coin_bonus_mul = data.get("coin_bonus_mul",1)
 			xp_bonus_mul = data.get("xp_bonus_mul",1)
 			upg12cost = data.get("upg12cost",10000)
+			upg13cost = data.get("upg13cost",15000)
+			cquake_bought = data.get("cquake_bought",false)
+			upg14cost = data.get("upg14cost",12000)
+			lootupg2_bought = data.get("lootupg2_bought",false)
 	else:
 		save_game()
 
@@ -125,7 +137,9 @@ func reset_game():
 	bos_bought = false
 	discharge_bought = false
 	wfire_bought = false
+	cquake_bought = false
 	lootupg1_bought = false
+	lootupg2_bought = false
 	inventory.clear()
 	upg1cost = 15
 	upg2cost = 30
@@ -139,6 +153,8 @@ func reset_game():
 	upg10cost = 2000
 	upg11cost = 3000
 	upg12cost = 10000
+	upg13cost = 15000
+	upg14cost = 12000
 	coin_bonus_mul = 1
 	xp_bonus_mul = 1
 	phase = game_phase.FIGHTING

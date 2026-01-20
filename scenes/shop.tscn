@@ -110,7 +110,7 @@ layout_mode = 0
 offset_left = 289.0
 offset_top = 28.0
 offset_right = 875.0
-offset_bottom = 620.0
+offset_bottom = 621.0
 
 [node name="ui" type="VBoxContainer" parent="s"]
 layout_mode = 2
@@ -907,7 +907,6 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Lvl20Overlay" type="Control" parent="s/ui/upg11"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1019,6 +1018,164 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="upg13" type="Button" parent="s/ui"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1l46r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_032fp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2fc2m")
+text = "
+
+"
+
+[node name="upg13cost" type="Label" parent="s/ui/upg13"]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 37.0
+offset_right = 943.0
+offset_bottom = 81.0
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 30
+text = "25.0k coins"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="s/ui/upg13"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 0
+offset_left = 16.0
+offset_top = -3.0
+offset_right = 516.0
+offset_bottom = 117.0
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 30
+text = "Strength Increase(+500 Attack 
+Strength) -                 
+              "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Lvl25Overlay" type="Control" parent="s/ui/upg13"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="s/ui/upg13/Lvl25Overlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.11366529, 0.11366529, 0.113665275, 1)
+
+[node name="Label" type="Label" parent="s/ui/upg13/Lvl25Overlay"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 0
+offset_left = 24.0
+offset_top = -8.0
+offset_right = 524.0
+offset_bottom = 83.0
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 30
+text = "Unlock at Level 25"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="upg14" type="Button" parent="s/ui"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1l46r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_032fp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2fc2m")
+text = "
+
+"
+
+[node name="upg14cost" type="Label" parent="s/ui/upg14"]
+layout_mode = 0
+offset_left = 361.0
+offset_top = 37.0
+offset_right = 1028.0
+offset_bottom = 81.0
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 30
+text = "12K coins"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="s/ui/upg14"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 0
+offset_left = 1.0
+offset_top = -3.0
+offset_right = 501.0
+offset_bottom = 117.0
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 30
+text = "Loot Upgrade 2
+(30% extra coins and xp) -                  
+              "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Lvl25Overlay" type="Control" parent="s/ui/upg14"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="s/ui/upg14/Lvl25Overlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.11366529, 0.11366529, 0.113665275, 1)
+
+[node name="Label" type="Label" parent="s/ui/upg14/Lvl25Overlay"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 0
+offset_left = 24.0
+offset_top = -8.0
+offset_right = 524.0
+offset_bottom = 83.0
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 30
+text = "Unlock at Level 25"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [connection signal="pressed" from="close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="s/ui/upg1" to="." method="_on_upg_1_pressed"]
 [connection signal="pressed" from="s/ui/upg2" to="." method="_on_upg_2_pressed"]
@@ -1032,3 +1189,5 @@ autowrap_mode = 2
 [connection signal="pressed" from="s/ui/upg10" to="." method="_on_upg_10_pressed"]
 [connection signal="pressed" from="s/ui/upg11" to="." method="_on_upg_11_pressed"]
 [connection signal="pressed" from="s/ui/upg12" to="." method="_on_upg_12_pressed"]
+[connection signal="pressed" from="s/ui/upg13" to="." method="_on_upg_13_pressed"]
+[connection signal="pressed" from="s/ui/upg14" to="." method="_on_upg_14_pressed"]
