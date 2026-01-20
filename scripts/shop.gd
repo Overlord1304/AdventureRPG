@@ -15,6 +15,8 @@ func _ready():
 		$s/ui/upg10.disabled = true
 	if Global.cquake_bought:
 		$s/ui/upg13.disabled = true
+	if Global.hfire_bought:
+		$s/ui/upg16.disabled = true
 	$s/ui/upg1/upg1cost.text = "%s Coins" % Global.format_number(Global.upg1cost)
 	$s/ui/upg2/upg2cost.text = "%s Coins" % Global.format_number(Global.upg2cost)
 	$s/ui/upg3/upg3cost.text = "%s Coins" % Global.format_number(Global.upg3cost)
@@ -29,6 +31,9 @@ func _ready():
 	$s/ui/upg12/upg12cost.text = "%s Coins" % Global.format_number(Global.upg12cost)
 	$s/ui/upg13/upg13cost.text = "%s Coins" % Global.format_number(Global.upg13cost)
 	$s/ui/upg14/upg14cost.text = "%s Coins" % Global.format_number(Global.upg14cost)
+	$s/ui/upg15/upg15cost.text = "%s Coins" % Global.format_number(Global.upg15cost)
+	$s/ui/upg16/upg16cost.text = "%s Coins" % Global.format_number(Global.upg16cost)
+	$s/ui/upg17/upg17cost.text = "%s Coins" % Global.format_number(Global.upg17cost)
 	if Global.level >= 5:
 		$s/ui/upg3/Lvl5Overlay.hide()
 		$s/ui/upg4/Lvl5Overlay.hide()
@@ -46,6 +51,10 @@ func _ready():
 		$s/ui/upg12/Lvl25Overlay.hide()
 		$s/ui/upg13/Lvl25Overlay.hide()
 		$s/ui/upg14/Lvl25Overlay.hide()
+	if Global.level >= 30:
+		$s/ui/upg15/Lvl30Overlay.hide()
+		$s/ui/upg16/Lvl30Overlay.hide()
+		$s/ui/upg17/Lvl30Overlay.hide()
 func _on_upg_1_pressed() -> void:
 	if Global.currency < Global.upg1cost:
 		message_label.text = "Not enough coins!"
@@ -234,3 +243,44 @@ func _on_upg_14_pressed() -> void:
 	message_label.text = "Coins and xp gain increased by 30%"
 	
 	$s/ui/upg14.disabled = true
+
+
+func _on_upg_15_pressed() -> void:
+	if Global.currency < Global.upg15cost:
+		message_label.text = "Not enough coins!"
+		return
+	Global.currency -= Global.upg15cost
+	Global.upg15cost = int(ceil(Global.upg15cost * 1.15))
+	Global.attack_bonus += 1000
+	Global.save_game()
+	$s/ui/upg15/upg15cost.text = "%s Coins" % Global.format_number(Global.upg15cost)
+	message_label.text = "You gained 500 attack strength"
+
+
+func _on_upg_16_pressed() -> void:
+	Global.hfire_bought = true
+	
+	if Global.currency < Global.upg16cost:
+		message_label.text = "Not enough coins!"
+		return
+	Global.currency -= Global.upg16cost
+	if "hellfire_spell" not in Global.inventory:
+		Global.inventory.append("hellfire_spell")
+	Global.save_game()
+	message_label.text = "You gained a new spell"
+	$s/ui/upg16.disabled = true
+
+
+func _on_upg_17_pressed() -> void:
+	Global.lootupg3_bought = true
+	
+	if Global.currency < Global.upg17cost:
+		message_label.text = "Not enough coins!"
+		return
+	Global.currency -= Global.upg17cost
+	Global.coin_bonus_mul *= 1.5
+	Global.xp_bonus_mul *= 1.5
+	Global.save_game()
+	message_label.text = "Coins and xp gain increased by 50%"
+	
+	$s/ui/upg17.disabled = true

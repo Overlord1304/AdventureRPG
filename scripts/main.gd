@@ -12,8 +12,8 @@ var enemies = [
 		"max_level": 4,
 		"health_mul": 1.0,
 		"attack_mul": 1.0,
-		"coin_mul": 1.0,
-		"xp_mul": 1.0
+		"coin_mul": 1111111.0,
+		"xp_mul": 11111111.0
 	},
 	{
 		"name": "Bandit",
@@ -99,7 +99,7 @@ var enemies = [
 	{
 		"name": "Ogre",
 		"min_level": 26,
-		"max_level": 29,
+		"max_level": 30,
 		"health_mul": 5.0,
 		"attack_mul": 3.2,
 		"coin_mul": 5.5,
@@ -108,11 +108,29 @@ var enemies = [
 	{
 		"name": "Golem",
 		"min_level": 26,
-		"max_level": 29,
+		"max_level": 30,
 		"health_mul": 5.1,
 		"attack_mul": 3.1,
 		"coin_mul": 5.5,
 		"xp_mul": 4.2
+	},
+	{
+		"name": "Demon",
+		"min_level": 31,
+		"max_level": 99,
+		"health_mul": 9.5,
+		"attack_mul": 4.5,
+		"coin_mul": 10,
+		"xp_mul": 9.0
+	},
+	{
+		"name": "Imp",
+		"min_level": 31,
+		"max_level": 99,
+		"health_mul": 9.5,
+		"attack_mul": 4.5,
+		"coin_mul": 10.0,
+		"xp_mul": 9.0
 	}
 ]
 
@@ -138,7 +156,7 @@ var bosses = [
 	{
 		"name": "M.E.C.H",
 		"min_level": 21,
-		"max_level": 24,
+		"max_level": 25,
 		"health_mul": 4.0,
 		"attack_mul": 3.5,
 		"coin_mul": 9.0,
@@ -146,12 +164,21 @@ var bosses = [
 	},
 	{
 		"name": "SKELLY V2",
-		"min_level": 25,
-		"max_level": 29,
+		"min_level": 26,
+		"max_level": 30,
 		"health_mul": 6.0,
 		"attack_mul": 4.0,
 		"coin_mul": 12.0,
 		"xp_mul": 8.5
+	},
+	{
+		"name": "overlord",
+		"min_level": 31,
+		"max_level": 99,
+		"health_mul": 10.0,
+		"attack_mul": 7.5,
+		"coin_mul": 20.0,
+		"xp_mul": 20.0
 	}
 ]
 func _ready():
@@ -174,6 +201,8 @@ func _ready():
 		$s/ui/spellselect/container/wraithfire.show()
 	if Global.cquake_bought:
 		$s/ui/spellselect/container/cosmicquake.show()
+	if Global.hfire_bought:
+		$s/ui/spellselect/container/hellfire.show()
 	
 	update_ui()
 func _process(delta):
@@ -257,9 +286,9 @@ func check_level_up():
 	while Global.xp >= Global.xp_needed:
 		Global.xp -= Global.xp_needed
 		Global.level += 1
-		Global.xp_needed = int(Global.xp_needed * 1.75)
+		Global.xp_needed = int(Global.xp_needed * 1.4)
 
-		Global.max_health += 10
+		Global.max_health += 25
 		Global.base_attack += 2
 		Global.health = Global.max_health
  
@@ -357,6 +386,8 @@ func cast_spell():
 			dmg = 800
 		"cosmicquake_spell":
 			dmg = 1500
+		"hellfire_spell":
+			dmg = 3000
 	Global.current_enemy["health"] -= dmg
 	message_label.text = "You cast %s for %s damage" %[Global.spell_selected,Global.format_number(dmg)]
 	Global.sutf = true
@@ -403,3 +434,7 @@ func _on_wraithfire_pressed() -> void:
 
 func _on_cosmicquake_pressed() -> void:
 	select_spell("cosmicquake_spell")
+
+
+func _on_hellfire_pressed() -> void:
+	select_spell("hellfire_spell")

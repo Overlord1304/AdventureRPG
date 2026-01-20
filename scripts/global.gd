@@ -4,7 +4,7 @@ var phase = game_phase.FIGHTING
 var health = 100
 var max_health = 100 
 var currency = 0
-var base_attack = 100
+var base_attack = 10
 var level = 1
 var xp = 0
 var coin_bonus_mul = 1
@@ -24,8 +24,10 @@ var bos_bought = false
 var discharge_bought = false
 var wfire_bought = false
 var cquake_bought = false
+var hfire_bought = false
 var lootupg1_bought = false
 var lootupg2_bought = false
+var lootupg3_bought = false
 var upg1cost = 15
 var upg2cost = 30
 var upg3cost = 40
@@ -40,6 +42,9 @@ var upg11cost = 3000
 var upg12cost = 10000
 var upg13cost = 15000
 var upg14cost = 12000
+var upg15cost = 25000
+var upg16cost = 50000
+var upg17cost = 30000
 func save_game():
 	var data = {
 			"health": health,
@@ -75,6 +80,11 @@ func save_game():
 			"cquake_bought" : cquake_bought,
 			"upg14cost": upg14cost,
 			"lootupg2cost" : lootupg2_bought,
+			"upg15cost": upg15cost,
+			"upg16cost": upg16cost,
+			"hfire_bought": hfire_bought,
+			"upg17cost": upg17cost,
+			"lootupg3cost": lootupg3_bought
 		}
 	var file = FileAccess.open(saves,FileAccess.WRITE)
 	file.store_var(data)
@@ -118,6 +128,11 @@ func load_game():
 			cquake_bought = data.get("cquake_bought",false)
 			upg14cost = data.get("upg14cost",12000)
 			lootupg2_bought = data.get("lootupg2_bought",false)
+			upg15cost = data.get("upg15cost",25000)
+			upg16cost = data.get("upg16cost",50000)
+			hfire_bought = data.get("hfire_bought",false)
+			upg17cost = data.get("upg17cost",30000)
+			lootupg3_bought = data.get("lootupg3_bought",false)
 	else:
 		save_game()
 
@@ -138,8 +153,10 @@ func reset_game():
 	discharge_bought = false
 	wfire_bought = false
 	cquake_bought = false
+	hfire_bought = false
 	lootupg1_bought = false
 	lootupg2_bought = false
+	lootupg3_bought = false
 	inventory.clear()
 	upg1cost = 15
 	upg2cost = 30
@@ -155,6 +172,9 @@ func reset_game():
 	upg12cost = 10000
 	upg13cost = 15000
 	upg14cost = 12000
+	upg15cost = 25000
+	upg16cost = 50000
+	upg17cost = 30000
 	coin_bonus_mul = 1
 	xp_bonus_mul = 1
 	phase = game_phase.FIGHTING
