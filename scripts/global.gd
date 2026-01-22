@@ -45,6 +45,7 @@ var upg14cost = 12000
 var upg15cost = 25000
 var upg16cost = 50000
 var upg17cost = 30000
+var has_seen_dialogue = false
 func save_game():
 	var data = {
 			"health": health,
@@ -84,7 +85,8 @@ func save_game():
 			"upg16cost": upg16cost,
 			"hfire_bought": hfire_bought,
 			"upg17cost": upg17cost,
-			"lootupg3cost": lootupg3_bought
+			"lootupg3cost": lootupg3_bought,
+			"has_seen_dialogue": has_seen_dialogue
 		}
 	var file = FileAccess.open(saves,FileAccess.WRITE)
 	file.store_var(data)
@@ -133,11 +135,13 @@ func load_game():
 			hfire_bought = data.get("hfire_bought",false)
 			upg17cost = data.get("upg17cost",30000)
 			lootupg3_bought = data.get("lootupg3_bought",false)
+			has_seen_dialogue = data.get("has_seen_dialogue",false)
 	else:
 		save_game()
 
 
 func reset_game():
+	current_enemy = null
 	health = 100
 	max_health = 100 
 	currency = 0
@@ -178,7 +182,7 @@ func reset_game():
 	coin_bonus_mul = 1
 	xp_bonus_mul = 1
 	phase = game_phase.FIGHTING
-	DirAccess.remove_absolute(saves)
+	save_game()
 func format_number(n):
 	if n < 1000:
 		return str(int(round(n)))

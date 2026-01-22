@@ -1,10 +1,13 @@
 extends Control
-
+@onready var dialogue_box = $Control
 @onready var message_label = $s/ui/message
 @onready var health_bar = $s/ui/HealthBar
 @export var spell_group: ButtonGroup
 var health_tween
 var displayed_health = 0
+var dialogues = [
+	{"text":"Welcome to AdventureRPG. Face different enemies to level up and increase attack power,so you can face better enemies lol. Click attack to fight your first enemy!"}
+]
 var enemies = [
 	{
 		"name": "Goblin",
@@ -12,8 +15,8 @@ var enemies = [
 		"max_level": 4,
 		"health_mul": 1.0,
 		"attack_mul": 1.0,
-		"coin_mul": 1111111.0,
-		"xp_mul": 11111111.0
+		"coin_mul": 1.0,
+		"xp_mul": 1.0
 	},
 	{
 		"name": "Bandit",
@@ -182,9 +185,16 @@ var bosses = [
 	}
 ]
 func _ready():
-	$s/ui/message.hide()
 	Global.load_game()
+	if !Global.has_seen_dialogue:
+		dialogue_box.start_dialogue(dialogues)
+		Global.has_seen_dialogue = true
+		Global.save_game()
+	$bgmusic.play()
+	$s/ui/message.hide()
+
 	randomize()
+	_connect_buttons(self)
 	displayed_health = Global.health
 	health_bar.value = Global.health
 	if Global.sbol:
@@ -246,6 +256,9 @@ func create_boss():
 	}
 
 func _on_attack_pressed() -> void:
+	if Global.current_enemy == null:
+		start_new_battle()
+		return
 	if Global.phase == Global.game_phase.GAME_OVER:
 		return
 	if Global.enemy_defeated:
@@ -425,6 +438,7 @@ func _on_discharge_pressed() -> void:
 
 
 func _on_restart_pressed() -> void:
+	Global.reset_game()
 	get_tree().reload_current_scene()
 
 
@@ -438,3 +452,13 @@ func _on_cosmicquake_pressed() -> void:
 
 func _on_hellfire_pressed() -> void:
 	select_spell("hellfire_spell")
+
+func _connect_buttons(node: Node) -> void:
+	if node is Button:
+		node.button_down.connect(play_click)
+
+	for child in node.get_children():
+		_connect_buttons(child)
+		
+func play_click():
+	$clicksound.play()

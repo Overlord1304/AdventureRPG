@@ -1,7 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2evb2ai727xl"]
+[gd_scene load_steps=14 format=3 uid="uid://b2evb2ai727xl"]
 
 [ext_resource type="Script" uid="uid://bq5tbwl3oxepc" path="res://scripts/shop.gd" id="1_xfvoa"]
 [ext_resource type="FontFile" uid="uid://b1ecuue8wn2td" path="res://fonts/Fredoka-Regular.ttf" id="2_1l46r"]
+[ext_resource type="AudioStream" uid="uid://ovvkiss54d53" path="res://music/collected.wav" id="3_1l46r"]
+[ext_resource type="AudioStream" uid="uid://tebiqcfsoynx" path="res://music/click_sound.wav" id="4_032fp"]
+[ext_resource type="AudioStream" uid="uid://dbxbjhrd7p6q3" path="res://music/bgshoparpg.ogg" id="5_2fc2m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfvoa"]
 bg_color = Color(0.99607843, 0.43529412, 0.38039216, 1)
@@ -57,7 +60,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xfvoa")
 
-[node name="close" type="Button" parent="."]
+[node name="close" type="Button" parent="." groups=["close"]]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -1412,6 +1415,18 @@ text = "Unlock at Level 30"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="upgsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_1l46r")
+volume_db = 8.211
+
+[node name="clicksound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_032fp")
+volume_db = 24.0
+
+[node name="bgmusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_2fc2m")
+volume_db = -17.431
 
 [connection signal="pressed" from="close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="s/ui/upg1" to="." method="_on_upg_1_pressed"]

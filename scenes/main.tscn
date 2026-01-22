@@ -1,8 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://bk0ytbb6gwecd"]
+[gd_scene load_steps=18 format=3 uid="uid://bk0ytbb6gwecd"]
 
 [ext_resource type="Script" uid="uid://c6h22hipvelmk" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="ButtonGroup" uid="uid://bpgo7fam45yg7" path="res://scenes/spell_group.tres" id="2_jyhfs"]
 [ext_resource type="FontFile" uid="uid://b1ecuue8wn2td" path="res://fonts/Fredoka-Regular.ttf" id="2_sugp2"]
+[ext_resource type="AudioStream" uid="uid://tebiqcfsoynx" path="res://music/click_sound.wav" id="4_jyhfs"]
+[ext_resource type="AudioStream" uid="uid://bg88imggg5hqc" path="res://music/bgarpg.ogg" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://pv8tvahlowdh" path="res://scenes/dialogue.tscn" id="6_tefeu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
 bg_color = Color(0.50980395, 0.7764706, 0.88235295, 1)
@@ -383,6 +386,22 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_0wfyh")
 toggle_mode = true
 button_group = ExtResource("2_jyhfs")
 text = "Hellfire"
+
+[node name="clicksound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_jyhfs")
+volume_db = 24.0
+max_polyphony = 16
+
+[node name="bgmusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_tbgi4")
+volume_db = -17.431
+
+[node name="Control" parent="." instance=ExtResource("6_tefeu")]
+visible = false
+z_index = 39
+layout_mode = 1
+offset_top = 1.0
+offset_bottom = 1.0
 
 [connection signal="pressed" from="s/ui/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="s/ui/HBoxContainer/attack" to="." method="_on_attack_pressed"]

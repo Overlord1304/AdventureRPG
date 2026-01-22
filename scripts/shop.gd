@@ -2,6 +2,8 @@ extends Control
 @onready var message_label = $s/ui/message
 @onready var close = $close
 func _ready():
+	$bgmusic.play()
+	connect_buttons(self)
 	message_label.text = "Welcome to the shop!"
 	if Global.fball_bought:
 		$s/ui/upg2.disabled = true
@@ -58,6 +60,7 @@ func _ready():
 func _on_upg_1_pressed() -> void:
 	if Global.currency < Global.upg1cost:
 		message_label.text = "Not enough coins!"
+		$clicksound.play()
 		return
 	Global.currency -= Global.upg1cost
 	Global.upg1cost = int(ceil(Global.upg1cost * 1.15))
@@ -65,7 +68,7 @@ func _on_upg_1_pressed() -> void:
 	Global.save_game()
 	$s/ui/upg1/upg1cost.text = "%s Coins" % Global.format_number(Global.upg1cost)
 	message_label.text = "You gained 2 attack strength"
-
+	$upgsound.play()
 
 func _on_close_pressed() -> void:
 		get_tree().change_scene_to_file("res://scenes/main.tscn")
@@ -76,6 +79,7 @@ func _on_upg_2_pressed() -> void:
 	
 	if Global.currency < Global.upg2cost:
 		message_label.text = "Not enough coins!"
+		$clicksound.play()
 		return
 	Global.currency -= Global.upg2cost
 	if "fireball_spell" not in Global.inventory:
@@ -83,11 +87,12 @@ func _on_upg_2_pressed() -> void:
 	Global.save_game()
 	message_label.text = "You gained a new spell"
 	$s/ui/upg2.disabled = true
-
+	$upgsound.play()
 
 func _on_upg_3_pressed() -> void:
 	if Global.currency < Global.upg3cost:
 		message_label.text = "Not enough coins!"
+		$clicksound.play()
 		return
 	Global.currency -= Global.upg3cost
 	Global.upg3cost = int(ceil(Global.upg3cost * 1.15))
@@ -95,13 +100,14 @@ func _on_upg_3_pressed() -> void:
 	Global.save_game()
 	$s/ui/upg3/upg3cost.text = "%s Coins" % Global.format_number(Global.upg3cost)
 	message_label.text = "You gained 5 attack strength"
-
+	$upgsound.play()
 
 func _on_upg_4_pressed() -> void:
 	Global.iblast_bought = true
 	
 	if Global.currency < Global.upg4cost:
 		message_label.text = "Not enough coins!"
+		$clicksound.play()
 		return
 	Global.currency -= Global.upg4cost
 	if "iceblast_spell" not in Global.inventory:
@@ -109,11 +115,12 @@ func _on_upg_4_pressed() -> void:
 	Global.save_game()
 	message_label.text = "You gained a new spell"
 	$s/ui/upg4.disabled = true
-
+	$upgsound.play()
 
 func _on_upg_5_pressed() -> void:
 	if Global.currency < Global.upg5cost:
 		message_label.text = "Not enough coins!"
+		$clicksound.play()
 		return
 	Global.currency -= Global.upg5cost
 	Global.upg5cost = int(ceil(Global.upg5cost * 1.15))
@@ -121,13 +128,14 @@ func _on_upg_5_pressed() -> void:
 	Global.save_game()
 	$s/ui/upg5/upg5cost.text = "%s Coins" % Global.format_number(Global.upg5cost)
 	message_label.text = "You gained 10 attack strength"
-
+	$upgsound.play()
 
 func _on_upg_6_pressed() -> void:
 	Global.bos_bought = true
 	
 	if Global.currency < Global.upg6cost:
 		message_label.text = "Not enough coins!"
+		$clicksound.play()
 		return
 	Global.currency -= Global.upg6cost
 	if "bos_spell" not in Global.inventory:
@@ -135,11 +143,12 @@ func _on_upg_6_pressed() -> void:
 	Global.save_game()
 	message_label.text = "You gained a new spell"
 	$s/ui/upg6.disabled = true
-
+	$upgsound.play()
 
 func _on_upg_7_pressed() -> void:
 	if Global.currency < Global.upg7cost:
 		message_label.text = "Not enough coins!"
+		$clicksound.play()
 		return
 	Global.currency -= Global.upg7cost
 	Global.upg7cost = int(ceil(Global.upg7cost * 1.15))
@@ -147,13 +156,14 @@ func _on_upg_7_pressed() -> void:
 	Global.save_game()
 	$s/ui/upg7/upg7cost.text = "%s Coins" % Global.format_number(Global.upg7cost)
 	message_label.text = "You gained 20 attack strength"
-
+	$upgsound.play()
 
 func _on_upg_8_pressed() -> void:
 	Global.discharge_bought = true
 	
 	if Global.currency < Global.upg8cost:
 		message_label.text = "Not enough coins!"
+		$clicksound.play()
 		return
 	Global.currency -= Global.upg8cost
 	if "discharge_spell" not in Global.inventory:
@@ -161,11 +171,12 @@ func _on_upg_8_pressed() -> void:
 	Global.save_game()
 	message_label.text = "You gained a new spell"
 	$s/ui/upg8.disabled = true
-
+	$upgsound.play()
 
 func _on_upg_9_pressed() -> void:
 	if Global.currency < Global.upg9cost:
 		message_label.text = "Not enough coins!"
+		$clicksound.play()
 		return
 	Global.currency -= Global.upg9cost
 	Global.upg9cost = int(ceil(Global.upg9cost * 1.15))
@@ -173,13 +184,14 @@ func _on_upg_9_pressed() -> void:
 	Global.save_game()
 	$s/ui/upg9/upg9cost.text = "%s Coins" % Global.format_number(Global.upg9cost)
 	message_label.text = "You gained 100 attack strength"
-
+	$upgsound.play()
 
 func _on_upg_10_pressed() -> void:
 	Global.wfire_bought = true
 	
 	if Global.currency < Global.upg10cost:
 		message_label.text = "Not enough coins!"
+		$clicksound.play()
 		return
 	Global.currency -= Global.upg10cost
 	if "wraithfire_spell" not in Global.inventory:
@@ -187,13 +199,14 @@ func _on_upg_10_pressed() -> void:
 	Global.save_game()
 	message_label.text = "You gained a new spell"
 	$s/ui/upg10.disabled = true
-
+	$upgsound.play()
 
 func _on_upg_11_pressed() -> void:
 	Global.lootupg1_bought = true
 	
 	if Global.currency < Global.upg11cost:
 		message_label.text = "Not enough coins!"
+		$clicksound.play()
 		return
 	Global.currency -= Global.upg11cost
 	Global.coin_bonus_mul *= 1.2
@@ -202,11 +215,12 @@ func _on_upg_11_pressed() -> void:
 	message_label.text = "Coins and xp gain increased by 20%"
 	
 	$s/ui/upg11.disabled = true
-
+	$upgsound.play()
 
 func _on_upg_12_pressed() -> void:
 	if Global.currency < Global.upg12cost:
 		message_label.text = "Not enough coins!"
+		$clicksound.play()
 		return
 	Global.currency -= Global.upg12cost
 	Global.upg12cost = int(ceil(Global.upg12cost * 1.15))
@@ -214,13 +228,14 @@ func _on_upg_12_pressed() -> void:
 	Global.save_game()
 	$s/ui/upg12/upg12cost.text = "%s Coins" % Global.format_number(Global.upg12cost)
 	message_label.text = "You gained 500 attack strength"
-
+	$upgsound.play()
 
 func _on_upg_13_pressed() -> void:
 	Global.cquake_bought = true
 	
 	if Global.currency < Global.upg13cost:
 		message_label.text = "Not enough coins!"
+		$clicksound.play()
 		return
 	Global.currency -= Global.upg13cost
 	if "cosmicquake_spell" not in Global.inventory:
@@ -228,26 +243,28 @@ func _on_upg_13_pressed() -> void:
 	Global.save_game()
 	message_label.text = "You gained a new spell"
 	$s/ui/upg13.disabled = true
-
+	$upgsound.play()
 
 func _on_upg_14_pressed() -> void:
 	Global.lootupg2_bought = true
 	
 	if Global.currency < Global.upg14cost:
 		message_label.text = "Not enough coins!"
+		$clicksound.play()
 		return
 	Global.currency -= Global.upg14cost
 	Global.coin_bonus_mul *= 1.33
 	Global.xp_bonus_mul *= 1.33
 	Global.save_game()
 	message_label.text = "Coins and xp gain increased by 30%"
-	
+	$upgsound.play()
 	$s/ui/upg14.disabled = true
 
 
 func _on_upg_15_pressed() -> void:
 	if Global.currency < Global.upg15cost:
 		message_label.text = "Not enough coins!"
+		$clicksound.play()
 		return
 	Global.currency -= Global.upg15cost
 	Global.upg15cost = int(ceil(Global.upg15cost * 1.15))
@@ -255,19 +272,21 @@ func _on_upg_15_pressed() -> void:
 	Global.save_game()
 	$s/ui/upg15/upg15cost.text = "%s Coins" % Global.format_number(Global.upg15cost)
 	message_label.text = "You gained 500 attack strength"
-
+	$upgsound.play()
 
 func _on_upg_16_pressed() -> void:
 	Global.hfire_bought = true
 	
 	if Global.currency < Global.upg16cost:
 		message_label.text = "Not enough coins!"
+		$clicksound.play()
 		return
 	Global.currency -= Global.upg16cost
 	if "hellfire_spell" not in Global.inventory:
 		Global.inventory.append("hellfire_spell")
 	Global.save_game()
 	message_label.text = "You gained a new spell"
+	$upgsound.play()
 	$s/ui/upg16.disabled = true
 
 
@@ -276,11 +295,20 @@ func _on_upg_17_pressed() -> void:
 	
 	if Global.currency < Global.upg17cost:
 		message_label.text = "Not enough coins!"
+		$clicksound.play()
 		return
 	Global.currency -= Global.upg17cost
 	Global.coin_bonus_mul *= 1.5
 	Global.xp_bonus_mul *= 1.5
 	Global.save_game()
 	message_label.text = "Coins and xp gain increased by 50%"
-	
+	$upgsound.play()
 	$s/ui/upg17.disabled = true
+func connect_buttons(node):
+	if node is Button and node.is_in_group("close"):
+		node.button_down.connect(play_click)
+	for child in node.get_children():
+		connect_buttons(child)
+
+func play_click():
+	$clicksound.play()
