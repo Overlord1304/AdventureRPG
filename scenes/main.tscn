@@ -16,8 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://niyvjuy1toyc" path="res://sprites/healhover.png" id="9_muem4"]
 [ext_resource type="Texture2D" uid="uid://cpi01vldgdbpm" path="res://sprites/shophover.png" id="9_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://bl5qd444kqm84" path="res://sprites/castpellnorm.png" id="10_dp3eg"]
+[ext_resource type="Texture2D" uid="uid://5sb3k0o0gbw0" path="res://sprites/healdisabled.png" id="10_gqmmt"]
 [ext_resource type="Texture2D" uid="uid://dxu3r22bvpqwx" path="res://sprites/castspellpressed.png" id="11_0ld40"]
 [ext_resource type="Texture2D" uid="uid://cqitk06ad05ta" path="res://sprites/castspellhover.png" id="12_gqmmt"]
+[ext_resource type="Texture2D" uid="uid://cw15q5paebsa" path="res://sprites/castspelldisabled.png" id="13_0ld40"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
 bg_color = Color(0.50980395, 0.7764706, 0.88235295, 1)
@@ -236,6 +238,7 @@ alignment = 1
 custom_minimum_size = Vector2(125, 125)
 layout_mode = 2
 size_flags_vertical = 4
+tooltip_text = "Attack"
 texture_normal = ExtResource("4_eb6dy")
 texture_pressed = ExtResource("5_trceg")
 texture_hover = ExtResource("6_a8y0u")
@@ -245,18 +248,22 @@ stretch_mode = 0
 custom_minimum_size = Vector2(125, 125)
 layout_mode = 2
 size_flags_vertical = 4
+tooltip_text = "Heal"
 texture_normal = ExtResource("7_jkv2x")
 texture_pressed = ExtResource("8_jbj1t")
 texture_hover = ExtResource("9_muem4")
+texture_disabled = ExtResource("10_gqmmt")
 stretch_mode = 0
 
 [node name="castspell" type="TextureButton" parent="s/ui/HBoxContainer" unique_id=821464528]
 visible = false
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
+tooltip_text = "Cast Spel"
 texture_normal = ExtResource("10_dp3eg")
 texture_pressed = ExtResource("11_0ld40")
 texture_hover = ExtResource("12_gqmmt")
+texture_disabled = ExtResource("13_0ld40")
 stretch_mode = 0
 
 [node name="spellselect" type="Panel" parent="s/ui" unique_id=1006312477]

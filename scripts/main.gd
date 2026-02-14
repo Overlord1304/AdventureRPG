@@ -453,8 +453,8 @@ func _on_cosmicquake_pressed() -> void:
 func _on_hellfire_pressed() -> void:
 	select_spell("hellfire_spell")
 
-func _connect_buttons(node: Node) -> void:
-	if node is Button:
+func _connect_buttons(node):
+	if node is Button or node is TextureButton:
 		node.button_down.connect(play_click)
 
 	for child in node.get_children():
