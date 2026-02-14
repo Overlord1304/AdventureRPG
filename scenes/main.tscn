@@ -10,8 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://b6nc611t6m8bv" path="res://sprites/attackhover.png" id="6_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://pv8tvahlowdh" path="res://scenes/dialogue.tscn" id="6_tefeu"]
 [ext_resource type="Texture2D" uid="uid://bwv7ykvsfevu0" path="res://sprites/shopnorm.png" id="7_85g3d"]
+[ext_resource type="Texture2D" uid="uid://dgpgd12w0jot2" path="res://sprites/healnorm.png" id="7_jkv2x"]
 [ext_resource type="Texture2D" uid="uid://qtwctq8cjnxq" path="res://sprites/shoppressed.png" id="8_choun"]
+[ext_resource type="Texture2D" uid="uid://ca6x7dgiaj40o" path="res://sprites/healpressed.png" id="8_jbj1t"]
+[ext_resource type="Texture2D" uid="uid://niyvjuy1toyc" path="res://sprites/healhover.png" id="9_muem4"]
 [ext_resource type="Texture2D" uid="uid://cpi01vldgdbpm" path="res://sprites/shophover.png" id="9_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://bl5qd444kqm84" path="res://sprites/castpellnorm.png" id="10_dp3eg"]
+[ext_resource type="Texture2D" uid="uid://dxu3r22bvpqwx" path="res://sprites/castspellpressed.png" id="11_0ld40"]
+[ext_resource type="Texture2D" uid="uid://cqitk06ad05ta" path="res://sprites/castspellhover.png" id="12_gqmmt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
 bg_color = Color(0.50980395, 0.7764706, 0.88235295, 1)
@@ -130,7 +136,7 @@ offset_right = 873.0
 offset_bottom = 619.0
 
 [node name="ui" type="VBoxContainer" parent="s" unique_id=515825842]
-custom_minimum_size = Vector2(0, 600)
+custom_minimum_size = Vector2(0, 700)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -221,57 +227,37 @@ text = "Restart"
 [node name="HBoxContainer" type="HBoxContainer" parent="s/ui" unique_id=1924517131]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-size_flags_horizontal = 5
+size_flags_horizontal = 9
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
-
-[node name="spacer2" type="Control" parent="s/ui/HBoxContainer" unique_id=749558317]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
+alignment = 1
 
 [node name="attack" type="TextureButton" parent="s/ui/HBoxContainer" unique_id=1574498307]
-custom_minimum_size = Vector2(0, 125)
+custom_minimum_size = Vector2(125, 125)
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 4
 texture_normal = ExtResource("4_eb6dy")
 texture_pressed = ExtResource("5_trceg")
 texture_hover = ExtResource("6_a8y0u")
 stretch_mode = 0
 
-[node name="spacer" type="Control" parent="s/ui/HBoxContainer" unique_id=2102991964]
-custom_minimum_size = Vector2(25, 0)
+[node name="heal" type="TextureButton" parent="s/ui/HBoxContainer" unique_id=963222102]
+custom_minimum_size = Vector2(125, 125)
 layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("7_jkv2x")
+texture_pressed = ExtResource("8_jbj1t")
+texture_hover = ExtResource("9_muem4")
+stretch_mode = 0
 
-[node name="heal" type="Button" parent="s/ui/HBoxContainer" unique_id=2001591039]
+[node name="castspell" type="TextureButton" parent="s/ui/HBoxContainer" unique_id=821464528]
+visible = false
+custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_sugp2")
-theme_override_styles/normal = SubResource("StyleBoxFlat_tbgi4")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_tipki")
-theme_override_styles/hover = SubResource("StyleBoxFlat_85g3d")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0wfyh")
-text = "Heal"
-
-[node name="spacer3" type="Control" parent="s/ui/HBoxContainer" unique_id=1511591297]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-
-[node name="castspell" type="Button" parent="s/ui/HBoxContainer" unique_id=1177785920]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_sugp2")
-theme_override_styles/normal = SubResource("StyleBoxFlat_tbgi4")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_tipki")
-theme_override_styles/hover = SubResource("StyleBoxFlat_85g3d")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0wfyh")
-text = "Cast Spell"
-
-[node name="spacer4" type="Control" parent="s/ui/HBoxContainer" unique_id=203317068]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
+texture_normal = ExtResource("10_dp3eg")
+texture_pressed = ExtResource("11_0ld40")
+texture_hover = ExtResource("12_gqmmt")
+stretch_mode = 0
 
 [node name="spellselect" type="Panel" parent="s/ui" unique_id=1006312477]
 layout_mode = 2
@@ -303,9 +289,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 12.0
-offset_top = 75.5
+offset_top = 51.0
 offset_right = -22.0
-offset_bottom = -36.5
+offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1

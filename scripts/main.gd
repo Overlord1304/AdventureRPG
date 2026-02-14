@@ -316,7 +316,6 @@ func update_ui():
 	health_bar.max_value = Global.max_health
 	animate_hb(Global.health)
 	$s/ui/HBoxContainer/castspell.visible = has_spell()
-	$s/ui/spellselect.visible = has_spell()
 	$s/ui/HBoxContainer/heal.disabled = (
 		Global.phase == Global.game_phase.FIGHTING
 		and not Global.enemy_defeated
