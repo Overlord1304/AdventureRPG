@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b2evb2ai727xl"]
+[gd_scene format=3 uid="uid://b2evb2ai727xl"]
 
 [ext_resource type="Script" uid="uid://bq5tbwl3oxepc" path="res://scripts/shop.gd" id="1_xfvoa"]
 [ext_resource type="FontFile" uid="uid://b1ecuue8wn2td" path="res://fonts/Fredoka-Regular.ttf" id="2_1l46r"]
@@ -51,7 +51,7 @@ shadow_size = 10
 [sub_resource type="Theme" id="Theme_tbgi4"]
 Panel/styles/panel = SubResource("StyleBoxFlat_jyhfs")
 
-[node name="shop" type="Control"]
+[node name="shop" type="Control" unique_id=2055876183]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,7 +60,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xfvoa")
 
-[node name="close" type="Button" parent="." groups=["close"]]
+[node name="close" type="Button" parent="." unique_id=393760470 groups=["close"]]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -80,7 +80,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_032fp")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2fc2m")
 text = "Close"
 
-[node name="Background" type="Panel" parent="."]
+[node name="Background" type="Panel" parent="." unique_id=1364230078]
 z_index = -2
 layout_mode = 1
 anchors_preset = 15
@@ -91,7 +91,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tefeu")
 
-[node name="Outline" type="Panel" parent="."]
+[node name="Outline" type="Panel" parent="." unique_id=1005206962]
 z_index = -2
 layout_mode = 1
 anchors_preset = 8
@@ -108,20 +108,20 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_o6xl0")
 
-[node name="s" type="ScrollContainer" parent="."]
+[node name="s" type="ScrollContainer" parent="." unique_id=2052672109]
 layout_mode = 0
 offset_left = 289.0
 offset_top = 28.0
 offset_right = 875.0
-offset_bottom = 622.0
+offset_bottom = 619.0
 
-[node name="ui" type="VBoxContainer" parent="s"]
+[node name="ui" type="VBoxContainer" parent="s" unique_id=796046368]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = SubResource("Theme_tbgi4")
 
-[node name="title" type="Label" parent="s/ui"]
+[node name="title" type="Label" parent="s/ui" unique_id=678183982]
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_1l46r")
@@ -129,7 +129,7 @@ theme_override_font_sizes/font_size = 75
 text = "SHOP"
 horizontal_alignment = 1
 
-[node name="message" type="Label" parent="s/ui"]
+[node name="message" type="Label" parent="s/ui" unique_id=1222407964]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -140,9 +140,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="upg1" type="Button" parent="s/ui"]
+[node name="upg1" type="Button" parent="s/ui" unique_id=64050888]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_1l46r")
 theme_override_font_sizes/font_size = 32
@@ -154,21 +156,7 @@ text = "
 
 "
 
-[node name="upg1cost" type="Label" parent="s/ui/upg1"]
-layout_mode = 0
-offset_left = 286.0
-offset_top = 36.0
-offset_right = 953.0
-offset_bottom = 80.0
-size_flags_horizontal = 4
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_1l46r")
-theme_override_font_sizes/font_size = 30
-text = "15 coins"
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Label" type="Label" parent="s/ui/upg1"]
+[node name="Label" type="Label" parent="s/ui/upg1" unique_id=825582037]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 0
 offset_left = 24.0
@@ -185,7 +173,22 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="upg2" type="Button" parent="s/ui"]
+[node name="upg1cost" type="Label" parent="s/ui/upg1" unique_id=508402381]
+layout_mode = 0
+offset_left = 286.0
+offset_top = 36.0
+offset_right = 953.0
+offset_bottom = 80.0
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_1l46r")
+theme_override_font_sizes/font_size = 30
+text = "15 coins"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="upg2" type="Button" parent="s/ui" unique_id=799815000]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
@@ -199,7 +202,7 @@ text = "
 
 "
 
-[node name="upg2cost" type="Label" parent="s/ui/upg2"]
+[node name="upg2cost" type="Label" parent="s/ui/upg2" unique_id=362497685]
 layout_mode = 0
 offset_left = 260.0
 offset_top = 38.0
@@ -213,7 +216,7 @@ text = "30 coins"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label" type="Label" parent="s/ui/upg2"]
+[node name="Label" type="Label" parent="s/ui/upg2" unique_id=786363746]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 1
 anchors_preset = 5
@@ -234,7 +237,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="upg3" type="Button" parent="s/ui"]
+[node name="upg3" type="Button" parent="s/ui" unique_id=1560974120]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
@@ -248,7 +252,7 @@ text = "
 
 "
 
-[node name="upg3cost" type="Label" parent="s/ui/upg3"]
+[node name="upg3cost" type="Label" parent="s/ui/upg3" unique_id=144856106]
 layout_mode = 0
 offset_left = 286.0
 offset_top = 36.0
@@ -262,7 +266,7 @@ text = "40 coins"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label" type="Label" parent="s/ui/upg3"]
+[node name="Label" type="Label" parent="s/ui/upg3" unique_id=1432584731]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 0
 offset_left = 24.0
@@ -279,7 +283,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Lvl5Overlay" type="Control" parent="s/ui/upg3"]
+[node name="Lvl5Overlay" type="Control" parent="s/ui/upg3" unique_id=1945321301]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -287,7 +291,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="s/ui/upg3/Lvl5Overlay"]
+[node name="ColorRect" type="ColorRect" parent="s/ui/upg3/Lvl5Overlay" unique_id=1632541509]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -296,13 +300,20 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.11366529, 0.11366529, 0.113665275, 1)
 
-[node name="Label" type="Label" parent="s/ui/upg3/Lvl5Overlay"]
+[node name="Label" type="Label" parent="s/ui/upg3/Lvl5Overlay" unique_id=1297221314]
 custom_minimum_size = Vector2(500, 0)
-layout_mode = 0
-offset_left = 24.0
-offset_top = -8.0
-offset_right = 524.0
-offset_bottom = 83.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -45.5
+offset_right = 250.0
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_1l46r")
@@ -312,7 +323,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="upg4" type="Button" parent="s/ui"]
+[node name="upg4" type="Button" parent="s/ui" unique_id=257248229]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
@@ -326,7 +338,7 @@ text = "
 
 "
 
-[node name="upg4cost" type="Label" parent="s/ui/upg4"]
+[node name="upg4cost" type="Label" parent="s/ui/upg4" unique_id=2143291310]
 layout_mode = 0
 offset_left = 271.0
 offset_top = 36.0
@@ -340,7 +352,7 @@ text = "100 coins"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label" type="Label" parent="s/ui/upg4"]
+[node name="Label" type="Label" parent="s/ui/upg4" unique_id=1696394657]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 0
 offset_left = 24.0
@@ -358,7 +370,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Lvl5Overlay" type="Control" parent="s/ui/upg4"]
+[node name="Lvl5Overlay" type="Control" parent="s/ui/upg4" unique_id=1946504373]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -366,7 +378,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="s/ui/upg4/Lvl5Overlay"]
+[node name="ColorRect" type="ColorRect" parent="s/ui/upg4/Lvl5Overlay" unique_id=1399153114]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -375,13 +387,20 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.11366529, 0.11366529, 0.113665275, 1)
 
-[node name="Label" type="Label" parent="s/ui/upg4/Lvl5Overlay"]
+[node name="Label" type="Label" parent="s/ui/upg4/Lvl5Overlay" unique_id=1513509818]
 custom_minimum_size = Vector2(500, 0)
-layout_mode = 0
-offset_left = 24.0
-offset_top = -8.0
-offset_right = 524.0
-offset_bottom = 83.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -45.5
+offset_right = 250.0
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_1l46r")
@@ -391,7 +410,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="upg5" type="Button" parent="s/ui"]
+[node name="upg5" type="Button" parent="s/ui" unique_id=794698186]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
@@ -405,7 +425,7 @@ text = "
 
 "
 
-[node name="upg5cost" type="Label" parent="s/ui/upg5"]
+[node name="upg5cost" type="Label" parent="s/ui/upg5" unique_id=1523424633]
 layout_mode = 0
 offset_left = 290.0
 offset_top = 36.0
@@ -419,7 +439,7 @@ text = "80 coins"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label" type="Label" parent="s/ui/upg5"]
+[node name="Label" type="Label" parent="s/ui/upg5" unique_id=2106520811]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 0
 offset_left = 24.0
@@ -436,7 +456,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Lvl10Overlay" type="Control" parent="s/ui/upg5"]
+[node name="Lvl10Overlay" type="Control" parent="s/ui/upg5" unique_id=1165461644]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -444,7 +464,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="s/ui/upg5/Lvl10Overlay"]
+[node name="ColorRect" type="ColorRect" parent="s/ui/upg5/Lvl10Overlay" unique_id=1873535845]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -453,13 +473,20 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.11366529, 0.11366529, 0.113665275, 1)
 
-[node name="Label" type="Label" parent="s/ui/upg5/Lvl10Overlay"]
+[node name="Label" type="Label" parent="s/ui/upg5/Lvl10Overlay" unique_id=390702162]
 custom_minimum_size = Vector2(500, 0)
-layout_mode = 0
-offset_left = 24.0
-offset_top = -8.0
-offset_right = 524.0
-offset_bottom = 83.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -45.5
+offset_right = 250.0
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_1l46r")
@@ -469,7 +496,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="upg6" type="Button" parent="s/ui"]
+[node name="upg6" type="Button" parent="s/ui" unique_id=1876568091]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
@@ -483,7 +511,7 @@ text = "
 
 "
 
-[node name="upg6cost" type="Label" parent="s/ui/upg6"]
+[node name="upg6cost" type="Label" parent="s/ui/upg6" unique_id=695025757]
 layout_mode = 0
 offset_left = 262.0
 offset_top = 37.0
@@ -497,7 +525,7 @@ text = "220 coins"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label" type="Label" parent="s/ui/upg6"]
+[node name="Label" type="Label" parent="s/ui/upg6" unique_id=72495857]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 0
 offset_left = 16.0
@@ -515,7 +543,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Lvl10Overlay" type="Control" parent="s/ui/upg6"]
+[node name="Lvl10Overlay" type="Control" parent="s/ui/upg6" unique_id=1508842485]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -523,7 +551,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="s/ui/upg6/Lvl10Overlay"]
+[node name="ColorRect" type="ColorRect" parent="s/ui/upg6/Lvl10Overlay" unique_id=524158938]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -532,13 +560,20 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.11366529, 0.11366529, 0.113665275, 1)
 
-[node name="Label" type="Label" parent="s/ui/upg6/Lvl10Overlay"]
+[node name="Label" type="Label" parent="s/ui/upg6/Lvl10Overlay" unique_id=2061092567]
 custom_minimum_size = Vector2(500, 0)
-layout_mode = 0
-offset_left = 24.0
-offset_top = -8.0
-offset_right = 524.0
-offset_bottom = 83.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -45.5
+offset_right = 250.0
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_1l46r")
@@ -548,7 +583,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="upg7" type="Button" parent="s/ui"]
+[node name="upg7" type="Button" parent="s/ui" unique_id=1564984484]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
@@ -562,7 +598,7 @@ text = "
 
 "
 
-[node name="upg7cost" type="Label" parent="s/ui/upg7"]
+[node name="upg7cost" type="Label" parent="s/ui/upg7" unique_id=476238898]
 layout_mode = 0
 offset_left = 290.0
 offset_top = 36.0
@@ -576,7 +612,7 @@ text = "160 coins"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label" type="Label" parent="s/ui/upg7"]
+[node name="Label" type="Label" parent="s/ui/upg7" unique_id=1450831899]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 0
 offset_left = 24.0
@@ -593,7 +629,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Lvl15Overlay" type="Control" parent="s/ui/upg7"]
+[node name="Lvl15Overlay" type="Control" parent="s/ui/upg7" unique_id=525349328]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -601,7 +637,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="s/ui/upg7/Lvl15Overlay"]
+[node name="ColorRect" type="ColorRect" parent="s/ui/upg7/Lvl15Overlay" unique_id=1272706281]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -610,13 +646,20 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.11366529, 0.11366529, 0.113665275, 1)
 
-[node name="Label" type="Label" parent="s/ui/upg7/Lvl15Overlay"]
+[node name="Label" type="Label" parent="s/ui/upg7/Lvl15Overlay" unique_id=1327505454]
 custom_minimum_size = Vector2(500, 0)
-layout_mode = 0
-offset_left = 24.0
-offset_top = -8.0
-offset_right = 524.0
-offset_bottom = 83.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -45.5
+offset_right = 250.0
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_1l46r")
@@ -626,7 +669,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="upg8" type="Button" parent="s/ui"]
+[node name="upg8" type="Button" parent="s/ui" unique_id=1301861803]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
@@ -640,7 +684,7 @@ text = "
 
 "
 
-[node name="upg8cost" type="Label" parent="s/ui/upg8"]
+[node name="upg8cost" type="Label" parent="s/ui/upg8" unique_id=1030053083]
 layout_mode = 0
 offset_left = 262.0
 offset_top = 37.0
@@ -654,7 +698,7 @@ text = "750 coins"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label" type="Label" parent="s/ui/upg8"]
+[node name="Label" type="Label" parent="s/ui/upg8" unique_id=548046144]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 0
 offset_left = 16.0
@@ -672,7 +716,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Lvl15Overlay" type="Control" parent="s/ui/upg8"]
+[node name="Lvl15Overlay" type="Control" parent="s/ui/upg8" unique_id=756886897]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -680,7 +724,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="s/ui/upg8/Lvl15Overlay"]
+[node name="ColorRect" type="ColorRect" parent="s/ui/upg8/Lvl15Overlay" unique_id=426758447]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -689,13 +733,20 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.11366529, 0.11366529, 0.113665275, 1)
 
-[node name="Label" type="Label" parent="s/ui/upg8/Lvl15Overlay"]
+[node name="Label" type="Label" parent="s/ui/upg8/Lvl15Overlay" unique_id=1136884660]
 custom_minimum_size = Vector2(500, 0)
-layout_mode = 0
-offset_left = 24.0
-offset_top = -8.0
-offset_right = 524.0
-offset_bottom = 83.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -45.5
+offset_right = 250.0
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_1l46r")
@@ -705,7 +756,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="upg9" type="Button" parent="s/ui"]
+[node name="upg9" type="Button" parent="s/ui" unique_id=787312355]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
@@ -719,7 +771,7 @@ text = "
 
 "
 
-[node name="upg9cost" type="Label" parent="s/ui/upg9"]
+[node name="upg9cost" type="Label" parent="s/ui/upg9" unique_id=1651321398]
 layout_mode = 0
 offset_left = 276.0
 offset_top = 37.0
@@ -733,7 +785,7 @@ text = "750 coins"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label" type="Label" parent="s/ui/upg9"]
+[node name="Label" type="Label" parent="s/ui/upg9" unique_id=446844387]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 0
 offset_left = 16.0
@@ -751,7 +803,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Lvl20Overlay" type="Control" parent="s/ui/upg9"]
+[node name="Lvl20Overlay" type="Control" parent="s/ui/upg9" unique_id=651981007]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -759,7 +811,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="s/ui/upg9/Lvl20Overlay"]
+[node name="ColorRect" type="ColorRect" parent="s/ui/upg9/Lvl20Overlay" unique_id=1541787309]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -768,13 +820,20 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.11366529, 0.11366529, 0.113665275, 1)
 
-[node name="Label" type="Label" parent="s/ui/upg9/Lvl20Overlay"]
+[node name="Label" type="Label" parent="s/ui/upg9/Lvl20Overlay" unique_id=1185569768]
 custom_minimum_size = Vector2(500, 0)
-layout_mode = 0
-offset_left = 24.0
-offset_top = -8.0
-offset_right = 524.0
-offset_bottom = 83.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -45.5
+offset_right = 250.0
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_1l46r")
@@ -784,7 +843,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="upg10" type="Button" parent="s/ui"]
+[node name="upg10" type="Button" parent="s/ui" unique_id=970531007]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
@@ -798,7 +858,7 @@ text = "
 
 "
 
-[node name="upg10cost" type="Label" parent="s/ui/upg10"]
+[node name="upg10cost" type="Label" parent="s/ui/upg10" unique_id=478693437]
 layout_mode = 0
 offset_left = 262.0
 offset_top = 37.0
@@ -812,7 +872,7 @@ text = "2K coins"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label" type="Label" parent="s/ui/upg10"]
+[node name="Label" type="Label" parent="s/ui/upg10" unique_id=291853817]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 0
 offset_left = 16.0
@@ -830,7 +890,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Lvl20Overlay" type="Control" parent="s/ui/upg10"]
+[node name="Lvl20Overlay" type="Control" parent="s/ui/upg10" unique_id=81071513]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -838,7 +898,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="s/ui/upg10/Lvl20Overlay"]
+[node name="ColorRect" type="ColorRect" parent="s/ui/upg10/Lvl20Overlay" unique_id=708920098]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -847,13 +907,20 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.11366529, 0.11366529, 0.113665275, 1)
 
-[node name="Label" type="Label" parent="s/ui/upg10/Lvl20Overlay"]
+[node name="Label" type="Label" parent="s/ui/upg10/Lvl20Overlay" unique_id=439573021]
 custom_minimum_size = Vector2(500, 0)
-layout_mode = 0
-offset_left = 24.0
-offset_top = -8.0
-offset_right = 524.0
-offset_bottom = 83.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -45.5
+offset_right = 250.0
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_1l46r")
@@ -863,7 +930,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="upg11" type="Button" parent="s/ui"]
+[node name="upg11" type="Button" parent="s/ui" unique_id=535333792]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
@@ -877,7 +945,7 @@ text = "
 
 "
 
-[node name="upg11cost" type="Label" parent="s/ui/upg11"]
+[node name="upg11cost" type="Label" parent="s/ui/upg11" unique_id=988024100]
 layout_mode = 0
 offset_left = 361.0
 offset_top = 37.0
@@ -891,7 +959,7 @@ text = "3.0K coins"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label" type="Label" parent="s/ui/upg11"]
+[node name="Label" type="Label" parent="s/ui/upg11" unique_id=1250508651]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 0
 offset_left = 1.0
@@ -909,7 +977,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Lvl20Overlay" type="Control" parent="s/ui/upg11"]
+[node name="Lvl20Overlay" type="Control" parent="s/ui/upg11" unique_id=1993199278]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -917,7 +985,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="s/ui/upg11/Lvl20Overlay"]
+[node name="ColorRect" type="ColorRect" parent="s/ui/upg11/Lvl20Overlay" unique_id=1184508643]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -926,13 +994,20 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.11366529, 0.11366529, 0.113665275, 1)
 
-[node name="Label" type="Label" parent="s/ui/upg11/Lvl20Overlay"]
+[node name="Label" type="Label" parent="s/ui/upg11/Lvl20Overlay" unique_id=176007352]
 custom_minimum_size = Vector2(500, 0)
-layout_mode = 0
-offset_left = 24.0
-offset_top = -8.0
-offset_right = 524.0
-offset_bottom = 83.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -45.5
+offset_right = 250.0
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_1l46r")
@@ -942,7 +1017,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="upg12" type="Button" parent="s/ui"]
+[node name="upg12" type="Button" parent="s/ui" unique_id=146383229]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
@@ -956,7 +1032,7 @@ text = "
 
 "
 
-[node name="upg12cost" type="Label" parent="s/ui/upg12"]
+[node name="upg12cost" type="Label" parent="s/ui/upg12" unique_id=1323563271]
 layout_mode = 0
 offset_left = 276.0
 offset_top = 37.0
@@ -970,7 +1046,7 @@ text = "10.0k coins"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label" type="Label" parent="s/ui/upg12"]
+[node name="Label" type="Label" parent="s/ui/upg12" unique_id=435227631]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 0
 offset_left = 16.0
@@ -988,7 +1064,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Lvl25Overlay" type="Control" parent="s/ui/upg12"]
+[node name="Lvl25Overlay" type="Control" parent="s/ui/upg12" unique_id=90659383]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -996,7 +1072,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="s/ui/upg12/Lvl25Overlay"]
+[node name="ColorRect" type="ColorRect" parent="s/ui/upg12/Lvl25Overlay" unique_id=122061128]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1005,13 +1081,20 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.11366529, 0.11366529, 0.113665275, 1)
 
-[node name="Label" type="Label" parent="s/ui/upg12/Lvl25Overlay"]
+[node name="Label" type="Label" parent="s/ui/upg12/Lvl25Overlay" unique_id=1330159221]
 custom_minimum_size = Vector2(500, 0)
-layout_mode = 0
-offset_left = 24.0
-offset_top = -8.0
-offset_right = 524.0
-offset_bottom = 83.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -45.5
+offset_right = 250.0
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_1l46r")
@@ -1021,7 +1104,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="upg13" type="Button" parent="s/ui"]
+[node name="upg13" type="Button" parent="s/ui" unique_id=1040979629]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
@@ -1035,7 +1119,7 @@ text = "
 
 "
 
-[node name="upg13cost" type="Label" parent="s/ui/upg13"]
+[node name="upg13cost" type="Label" parent="s/ui/upg13" unique_id=1910171669]
 layout_mode = 0
 offset_left = 276.0
 offset_top = 37.0
@@ -1049,7 +1133,7 @@ text = "25.0k coins"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label" type="Label" parent="s/ui/upg13"]
+[node name="Label" type="Label" parent="s/ui/upg13" unique_id=2097059452]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 0
 offset_left = 16.0
@@ -1067,7 +1151,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Lvl25Overlay" type="Control" parent="s/ui/upg13"]
+[node name="Lvl25Overlay" type="Control" parent="s/ui/upg13" unique_id=1748697069]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1075,7 +1159,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="s/ui/upg13/Lvl25Overlay"]
+[node name="ColorRect" type="ColorRect" parent="s/ui/upg13/Lvl25Overlay" unique_id=1476044484]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1084,13 +1168,20 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.11366529, 0.11366529, 0.113665275, 1)
 
-[node name="Label" type="Label" parent="s/ui/upg13/Lvl25Overlay"]
+[node name="Label" type="Label" parent="s/ui/upg13/Lvl25Overlay" unique_id=1117646848]
 custom_minimum_size = Vector2(500, 0)
-layout_mode = 0
-offset_left = 24.0
-offset_top = -8.0
-offset_right = 524.0
-offset_bottom = 83.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -45.5
+offset_right = 250.0
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_1l46r")
@@ -1100,7 +1191,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="upg14" type="Button" parent="s/ui"]
+[node name="upg14" type="Button" parent="s/ui" unique_id=544219692]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
@@ -1114,7 +1206,7 @@ text = "
 
 "
 
-[node name="upg14cost" type="Label" parent="s/ui/upg14"]
+[node name="upg14cost" type="Label" parent="s/ui/upg14" unique_id=605555848]
 layout_mode = 0
 offset_left = 361.0
 offset_top = 37.0
@@ -1128,7 +1220,7 @@ text = "12K coins"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label" type="Label" parent="s/ui/upg14"]
+[node name="Label" type="Label" parent="s/ui/upg14" unique_id=983285583]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 0
 offset_left = 1.0
@@ -1146,7 +1238,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Lvl25Overlay" type="Control" parent="s/ui/upg14"]
+[node name="Lvl25Overlay" type="Control" parent="s/ui/upg14" unique_id=942402132]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1154,7 +1246,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="s/ui/upg14/Lvl25Overlay"]
+[node name="ColorRect" type="ColorRect" parent="s/ui/upg14/Lvl25Overlay" unique_id=1488772852]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1163,13 +1255,20 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.11366529, 0.11366529, 0.113665275, 1)
 
-[node name="Label" type="Label" parent="s/ui/upg14/Lvl25Overlay"]
+[node name="Label" type="Label" parent="s/ui/upg14/Lvl25Overlay" unique_id=1327449948]
 custom_minimum_size = Vector2(500, 0)
-layout_mode = 0
-offset_left = 24.0
-offset_top = -8.0
-offset_right = 524.0
-offset_bottom = 83.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -45.5
+offset_right = 250.0
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_1l46r")
@@ -1179,7 +1278,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="upg15" type="Button" parent="s/ui"]
+[node name="upg15" type="Button" parent="s/ui" unique_id=390597086]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
@@ -1193,7 +1293,7 @@ text = "
 
 "
 
-[node name="upg15cost" type="Label" parent="s/ui/upg15"]
+[node name="upg15cost" type="Label" parent="s/ui/upg15" unique_id=1551605716]
 layout_mode = 0
 offset_left = 276.0
 offset_top = 37.0
@@ -1207,7 +1307,7 @@ text = "25.0k coins"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label" type="Label" parent="s/ui/upg15"]
+[node name="Label" type="Label" parent="s/ui/upg15" unique_id=1172742769]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 0
 offset_left = 16.0
@@ -1225,7 +1325,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Lvl30Overlay" type="Control" parent="s/ui/upg15"]
+[node name="Lvl30Overlay" type="Control" parent="s/ui/upg15" unique_id=826049928]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1233,7 +1333,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="s/ui/upg15/Lvl30Overlay"]
+[node name="ColorRect" type="ColorRect" parent="s/ui/upg15/Lvl30Overlay" unique_id=2046992627]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1242,13 +1342,20 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.11366529, 0.11366529, 0.113665275, 1)
 
-[node name="Label" type="Label" parent="s/ui/upg15/Lvl30Overlay"]
+[node name="Label" type="Label" parent="s/ui/upg15/Lvl30Overlay" unique_id=1509715401]
 custom_minimum_size = Vector2(500, 0)
-layout_mode = 0
-offset_left = 24.0
-offset_top = -8.0
-offset_right = 524.0
-offset_bottom = 83.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -45.5
+offset_right = 250.0
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_1l46r")
@@ -1258,7 +1365,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="upg16" type="Button" parent="s/ui"]
+[node name="upg16" type="Button" parent="s/ui" unique_id=1201154189]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
@@ -1272,7 +1380,7 @@ text = "
 
 "
 
-[node name="upg16cost" type="Label" parent="s/ui/upg16"]
+[node name="upg16cost" type="Label" parent="s/ui/upg16" unique_id=1074561683]
 layout_mode = 0
 offset_left = 276.0
 offset_top = 37.0
@@ -1286,7 +1394,7 @@ text = "50.0k coins"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label" type="Label" parent="s/ui/upg16"]
+[node name="Label" type="Label" parent="s/ui/upg16" unique_id=344711403]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 0
 offset_left = 16.0
@@ -1304,7 +1412,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Lvl30Overlay" type="Control" parent="s/ui/upg16"]
+[node name="Lvl30Overlay" type="Control" parent="s/ui/upg16" unique_id=1329073067]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1312,7 +1420,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="s/ui/upg16/Lvl30Overlay"]
+[node name="ColorRect" type="ColorRect" parent="s/ui/upg16/Lvl30Overlay" unique_id=547877378]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1321,13 +1429,20 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.11366529, 0.11366529, 0.113665275, 1)
 
-[node name="Label" type="Label" parent="s/ui/upg16/Lvl30Overlay"]
+[node name="Label" type="Label" parent="s/ui/upg16/Lvl30Overlay" unique_id=1266518944]
 custom_minimum_size = Vector2(500, 0)
-layout_mode = 0
-offset_left = 24.0
-offset_top = -8.0
-offset_right = 524.0
-offset_bottom = 83.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -45.5
+offset_right = 250.0
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_1l46r")
@@ -1337,7 +1452,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="upg17" type="Button" parent="s/ui"]
+[node name="upg17" type="Button" parent="s/ui" unique_id=172327455]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
@@ -1351,7 +1467,7 @@ text = "
 
 "
 
-[node name="upg17cost" type="Label" parent="s/ui/upg17"]
+[node name="upg17cost" type="Label" parent="s/ui/upg17" unique_id=430065594]
 layout_mode = 0
 offset_left = 361.0
 offset_top = 37.0
@@ -1365,7 +1481,7 @@ text = "30K coins"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label" type="Label" parent="s/ui/upg17"]
+[node name="Label" type="Label" parent="s/ui/upg17" unique_id=1820554564]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 0
 offset_left = 1.0
@@ -1383,7 +1499,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Lvl30Overlay" type="Control" parent="s/ui/upg17"]
+[node name="Lvl30Overlay" type="Control" parent="s/ui/upg17" unique_id=78605421]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1391,7 +1507,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="s/ui/upg17/Lvl30Overlay"]
+[node name="ColorRect" type="ColorRect" parent="s/ui/upg17/Lvl30Overlay" unique_id=1098808458]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1400,13 +1516,20 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.11366529, 0.11366529, 0.113665275, 1)
 
-[node name="Label" type="Label" parent="s/ui/upg17/Lvl30Overlay"]
+[node name="Label" type="Label" parent="s/ui/upg17/Lvl30Overlay" unique_id=896726706]
 custom_minimum_size = Vector2(500, 0)
-layout_mode = 0
-offset_left = 24.0
-offset_top = -8.0
-offset_right = 524.0
-offset_bottom = 83.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -45.5
+offset_right = 250.0
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_1l46r")
@@ -1416,15 +1539,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="upgsound" type="AudioStreamPlayer2D" parent="."]
+[node name="upgsound" type="AudioStreamPlayer2D" parent="." unique_id=1299515368]
 stream = ExtResource("3_1l46r")
 volume_db = 8.211
 
-[node name="clicksound" type="AudioStreamPlayer2D" parent="."]
+[node name="clicksound" type="AudioStreamPlayer2D" parent="." unique_id=938644677]
 stream = ExtResource("4_032fp")
 volume_db = 24.0
 
-[node name="bgmusic" type="AudioStreamPlayer2D" parent="."]
+[node name="bgmusic" type="AudioStreamPlayer2D" parent="." unique_id=1115601063]
 stream = ExtResource("5_2fc2m")
 volume_db = -17.431
 

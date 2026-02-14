@@ -261,6 +261,7 @@ func _on_attack_pressed() -> void:
 		return
 	if Global.phase == Global.game_phase.GAME_OVER:
 		return
+		
 	if Global.enemy_defeated:
 		start_new_battle()
 		update_ui()

@@ -186,17 +186,13 @@ func reset_game():
 func format_number(n):
 	if n < 1000:
 		return str(int(round(n)))
-
 	var suffixes = ["", "K", "M", "B", "T", "Q"]
 	var tier = int(floor(log(n) / log(1000)))
 	tier = min(tier, suffixes.size() - 1)
-
 	var scaled = n / pow(1000, tier)
-
-	var text := ""
+	var text = ""
 	if scaled < 10:
 		text = str(round(scaled * 10) / 10.0)
 	else:
 		text = str(int(round(scaled)))
-
 	return text + suffixes[tier]

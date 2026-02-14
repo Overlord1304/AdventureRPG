@@ -7,9 +7,9 @@ class_name DialogueBox
 var dialogue = []
 var index = 0
 
-var typing_speed := 0.03
-var is_typing := false
-var full_text := ""
+var typing_speed = 0.03
+var is_typing = false
+var full_text = ""
 
 func start_dialogue(lines):
 	dialogue = lines
