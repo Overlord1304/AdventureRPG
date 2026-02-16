@@ -46,6 +46,7 @@ var upg15cost = 25000
 var upg16cost = 50000
 var upg17cost = 30000
 var has_seen_dialogue = false
+var mv_seen = false
 func save_game():
 	var data = {
 			"health": health,
@@ -86,7 +87,8 @@ func save_game():
 			"hfire_bought": hfire_bought,
 			"upg17cost": upg17cost,
 			"lootupg3cost": lootupg3_bought,
-			"has_seen_dialogue": has_seen_dialogue
+			"has_seen_dialogue": has_seen_dialogue,
+			"mv_seen": mv_seen
 		}
 	var file = FileAccess.open(saves,FileAccess.WRITE)
 	file.store_var(data)
@@ -136,6 +138,7 @@ func load_game():
 			upg17cost = data.get("upg17cost",30000)
 			lootupg3_bought = data.get("lootupg3_bought",false)
 			has_seen_dialogue = data.get("has_seen_dialogue",false)
+			mv_seen = data.get("mv_seen",false)
 	else:
 		save_game()
 

@@ -1,6 +1,6 @@
 extends Control
 class_name DialogueBox
-
+@onready var name_label = $Panel/name
 @onready var dialogue_text = $Panel/dialogue
 @onready var next_button = $Panel/button
 
@@ -21,7 +21,7 @@ func show_line():
 	if index >= dialogue.size():
 		hide()
 		return
-
+	name_label.text = dialogue[index]["name"]
 	full_text = dialogue[index]["text"]
 	dialogue_text.text = ""
 	is_typing = true

@@ -86,6 +86,7 @@ func _on_upg_2_pressed() -> void:
 		Global.inventory.append("fireball_spell")
 	Global.save_game()
 	message_label.text = "You gained a new spell"
+
 	$s/ui/upg2.disabled = true
 	$upgsound.play()
 

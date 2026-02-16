@@ -6,7 +6,7 @@ extends Control
 var health_tween
 var displayed_health = 0
 var dialogues = [
-	{"text":"Welcome to AdventureRPG. Face different enemies to level up and increase attack power,so you can face better enemies lol. Click attack to fight your first enemy!"}
+	{"name":"???","text":"Welcome to AdventureRPG. Face different enemies to level up and increase attack power,so you can face better enemies lol. Click attack to fight your first enemy!"}
 ]
 var enemies = [
 	{
@@ -192,7 +192,8 @@ func _ready():
 		Global.save_game()
 	$bgmusic.play()
 	$s/ui/message.hide()
-
+	if Global.mv_seen:
+		mv_tp_in()
 	randomize()
 	_connect_buttons(self)
 	displayed_health = Global.health
@@ -216,10 +217,18 @@ func _ready():
 	
 	update_ui()
 func _process(delta):
+	print(Global.mv_seen)
 	if Global.spell_selected == "":
 		$s/ui/HBoxContainer/castspell.disabled = true
 	else:
 		$s/ui/HBoxContainer/castspell.disabled = false
+	if has_spell() and !Global.mv_seen:
+		Global.mv_seen = true
+		Global.save_game()
+		mv_intro()
+
+	
+	
 func start_new_battle():
 	Global.enemy_defeated = false
 	Global.phase = Global.game_phase.FIGHTING
@@ -462,3 +471,13 @@ func _connect_buttons(node):
 		
 func play_click():
 	$clicksound.play()
+func mv_intro():
+	$michaelvoid.show()
+	$michaelvoid/michaelvoidanim.play("tp_in")
+	await $michaelvoid/michaelvoidanim.animation_finished
+	$michaelvoid/michaelvoidanim.play("idle")
+func mv_tp_in():
+	$michaelvoid.show()
+	$michaelvoid/michaelvoidanim.play("tp_in")
+	await $michaelvoid/michaelvoidanim.animation_finished
+	$michaelvoid/michaelvoidanim.play("idle")

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cagmr05by6xix" path="res://scripts/dialogue.gd" id="1_3n4vj"]
 [ext_resource type="FontFile" uid="uid://b1ecuue8wn2td" path="res://fonts/Fredoka-Regular.ttf" id="2_bfpow"]
+[ext_resource type="FontFile" uid="uid://crg07qg7f4136" path="res://fonts/Fredoka-Bold.ttf" id="2_fyky8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fyky8"]
 bg_color = Color(1, 1, 1, 1)
@@ -28,7 +29,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3n4vj"]
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" unique_id=1516147544]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,7 +38,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3n4vj")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=822072787]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -49,23 +50,39 @@ grow_vertical = 0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fyky8")
 
-[node name="dialogue" type="Label" parent="Panel"]
+[node name="name" type="Label" parent="Panel" unique_id=1498712634]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 9.0
+offset_right = -27.0
+offset_bottom = -190.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_fyky8")
+theme_override_font_sizes/font_size = 45
+autowrap_mode = 3
+
+[node name="dialogue" type="Label" parent="Panel" unique_id=2080042151]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 27.0
-offset_top = 26.0
+offset_top = 96.0
 offset_right = -20.0
-offset_bottom = -37.0
+offset_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_bfpow")
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 35
 autowrap_mode = 3
 
-[node name="button" type="Button" parent="Panel"]
+[node name="button" type="Button" parent="Panel" unique_id=1491220153]
 z_index = 5
 layout_mode = 1
 anchors_preset = 15
@@ -79,7 +96,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_bfpow")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_vogiq")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3n4vj")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1392493360]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
