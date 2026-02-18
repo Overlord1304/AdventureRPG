@@ -51,13 +51,6 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wfyh"]
-bg_color = Color(0.99607843, 0.43529412, 0.38039216, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
 bg_color = Color(0.99607843, 0.43529412, 0.38039216, 1)
 corner_radius_top_left = 5
@@ -231,9 +224,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjqg0"]
-size = Vector2(243, 177)
-
 [node name="main" type="Control" unique_id=605445388]
 layout_mode = 3
 anchors_preset = 15
@@ -327,11 +317,11 @@ text = "Attack Strength : 12"
 horizontal_alignment = 1
 
 [node name="HealthBar" type="ProgressBar" parent="s/ui" unique_id=353684060]
+self_modulate = Color(0.0885599, 0.0885599, 0.0885599, 1)
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_sugp2")
-theme_override_styles/fill = SubResource("StyleBoxFlat_0wfyh")
 show_percentage = false
 
 [node name="health" type="Label" parent="s/ui" unique_id=2066740518]
@@ -586,17 +576,14 @@ texture_pressed = ExtResource("8_choun")
 texture_hover = ExtResource("9_ya4ey")
 
 [node name="michaelvoid" type="Area2D" parent="." unique_id=2099582666]
-position = Vector2(665, -383)
+visible = false
+position = Vector2(1579, -383)
 
 [node name="michaelvoidanim" type="AnimatedSprite2D" parent="michaelvoid" unique_id=1681817007]
-position = Vector2(-523, 546)
-scale = Vector2(7.953125, 7.5625005)
+position = Vector2(-784, 586)
+scale = Vector2(4.4453135, 4.000002)
 sprite_frames = SubResource("SpriteFrames_chjal")
 animation = &"tp_out"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="michaelvoid" unique_id=1259453688]
-position = Vector2(-522, 577)
-shape = SubResource("RectangleShape2D_cjqg0")
 
 [connection signal="pressed" from="s/ui/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="s/ui/HBoxContainer/attack" to="." method="_on_attack_pressed"]

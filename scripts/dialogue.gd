@@ -10,7 +10,7 @@ var index = 0
 var typing_speed = 0.03
 var is_typing = false
 var full_text = ""
-
+signal dialogue_finished
 func start_dialogue(lines):
 	dialogue = lines
 	index = 0
@@ -20,6 +20,7 @@ func start_dialogue(lines):
 func show_line():
 	if index >= dialogue.size():
 		hide()
+		emit_signal("dialogue_finished")
 		return
 	name_label.text = dialogue[index]["name"]
 	full_text = dialogue[index]["text"]
@@ -49,9 +50,14 @@ func _on_button_pressed() -> void:
 		is_typing = false
 		dialogue_text.text = full_text
 	else:
-		index += 1
-		show_line()
+		if dialogue[index].has("q"):
+			pass
+		else:
+			index += 1
+			show_line()
 
 
 func _on_no_pressed() -> void:
-	_on_button_pressed()
+	index += 1
+	show_line()
+	Global.mv_attack = true

@@ -15,7 +15,14 @@ var mv_intro_dialogue = [
 	{"name":"???","text":"uhhh.... yea you can call me like mike or something"},
 	{"name":"mike void","text":"yea that sounds like a good name lets go with that"},
 	{"q":"blahblahfiller","name":"mike void","text":"Give 1,000,000 coins?"},
-	{"name":"mike void","text":"grr your gonna pay for this"}
+	{"name":"mike void","text":"grr your gonna pay for this"},
+	{"name":"mike void","text":"muahahhahahaha"}
+]
+var mv_defeat_dialogue = [
+	{"name":"mike void","text":"AAAAAAAAAAAAAAAAAAAAA"}
+]
+var mv_last_dialogue = [
+	{"name":"mike void","text":"ILL BE BACK JUST YOU WAIT"}
 ]
 var enemies = [
 	{
@@ -203,6 +210,8 @@ func _ready():
 	$s/ui/message.hide()
 	if Global.mv_seen:
 		mv_tp_in()
+	if Global.mv_defeated:
+		$michaelvoid.hide()
 	randomize()
 	_connect_buttons(self)
 	displayed_health = Global.health
@@ -238,6 +247,7 @@ func _process(delta):
 	
 	
 func start_new_battle():
+
 	Global.enemy_defeated = false
 	Global.phase = Global.game_phase.FIGHTING
 	Global.sutf = false
@@ -287,6 +297,7 @@ func _on_attack_pressed() -> void:
 	update_ui()
 func player_attack():
 	var dmg = Global.base_attack + Global.attack_bonus
+
 	Global.current_enemy["health"] -= dmg
 	message_label.text = "You dealt %s damage." % Global.format_number(dmg)
 	if Global.current_enemy["health"] <= 0:
@@ -295,11 +306,17 @@ func player_attack():
 		enemy_attack()
 func enemy_attack():
 	var dmg = Global.current_enemy["attack"]
+	if Global.mv_attack:
+		dmg *= 3
 	Global.health -= dmg
 	message_label.text = "It hits you for %s, it has %s health left" % [Global.format_number(dmg),Global.format_number(Global.current_enemy["health"])]
 	if Global.health <= 0:
 		game_over()
 func win_battle():
+	if Global.mv_attack:
+		Global.mv_attack = false
+		mv_defeat() 
+		Global.save_game() 
 	Global.enemy_defeated = true
 	Global.phase = Global.game_phase.VICTORY
 	var base_coins_gain = 10 + Global.level * 2
@@ -332,6 +349,10 @@ func update_ui():
 	$s/ui/health.text = "Health: %s" % Global.format_number(Global.health)
 	health_bar.max_value = Global.max_health
 	animate_hb(Global.health)
+	if Global.mv_attack:
+		health_bar.self_modulate = Color("171717")
+	else:
+		health_bar.self_modulate = Color("fe6f61")
 	$s/ui/HBoxContainer/castspell.visible = has_spell()
 	$s/ui/HBoxContainer/heal.disabled = (
 		Global.phase == Global.game_phase.FIGHTING
@@ -485,8 +506,20 @@ func mv_intro():
 	await $michaelvoid/michaelvoidanim.animation_finished
 	$michaelvoid/michaelvoidanim.play("idle")
 	dialogue_box.start_dialogue(mv_intro_dialogue)
+	await dialogue_box.dialogue_finished
+	$michaelvoid/michaelvoidanim.play("tp_out")
+	await $michaelvoid/michaelvoidanim.animation_finished
+	$michaelvoid.hide()
+	message_label.text = "You feel your heart turn black with void"
+	message_label.show()
+	update_ui()
 func mv_tp_in():
 	$michaelvoid.show()
 	$michaelvoid/michaelvoidanim.play("tp_in")
 	await $michaelvoid/michaelvoidanim.animation_finished
 	$michaelvoid/michaelvoidanim.play("idle")
+func mv_defeat():
+	Global.mv_defeated = true
+	dialogue_box.start_dialogue(mv_defeat_dialogue)
+	dialogue_box.start_dialogue(mv_last_dialogue)
+	
