@@ -23,6 +23,10 @@ func show_line():
 		return
 	name_label.text = dialogue[index]["name"]
 	full_text = dialogue[index]["text"]
+	if dialogue[index].has("q"):
+		$Panel/no.show()
+	else:
+		$Panel/no.hide()
 	dialogue_text.text = ""
 	is_typing = true
 
@@ -47,3 +51,7 @@ func _on_button_pressed() -> void:
 	else:
 		index += 1
 		show_line()
+
+
+func _on_no_pressed() -> void:
+	_on_button_pressed()

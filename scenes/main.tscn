@@ -586,16 +586,16 @@ texture_pressed = ExtResource("8_choun")
 texture_hover = ExtResource("9_ya4ey")
 
 [node name="michaelvoid" type="Area2D" parent="." unique_id=2099582666]
-visible = false
+position = Vector2(665, -383)
 
 [node name="michaelvoidanim" type="AnimatedSprite2D" parent="michaelvoid" unique_id=1681817007]
-position = Vector2(136.75, 529)
+position = Vector2(-523, 546)
 scale = Vector2(7.953125, 7.5625005)
 sprite_frames = SubResource("SpriteFrames_chjal")
 animation = &"tp_out"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="michaelvoid" unique_id=1259453688]
-position = Vector2(138.5, 562.5)
+position = Vector2(-522, 577)
 shape = SubResource("RectangleShape2D_cjqg0")
 
 [connection signal="pressed" from="s/ui/Restart" to="." method="_on_restart_pressed"]

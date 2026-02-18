@@ -47,6 +47,7 @@ var upg16cost = 50000
 var upg17cost = 30000
 var has_seen_dialogue = false
 var mv_seen = false
+var mv_question = false
 func save_game():
 	var data = {
 			"health": health,

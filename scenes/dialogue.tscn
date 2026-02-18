@@ -29,6 +29,36 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3n4vj"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1cjp"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tp716"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03vpb"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ccu7b"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_6xhvj"]
+resource_name = "spell_group"
+
 [node name="Control" type="Control" unique_id=1516147544]
 layout_mode = 3
 anchors_preset = 15
@@ -96,6 +126,24 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_bfpow")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_vogiq")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3n4vj")
 
+[node name="no" type="Button" parent="Panel" unique_id=168581607]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 0
+offset_left = 58.0
+offset_top = 192.0
+offset_right = 177.0
+offset_bottom = 232.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_bfpow")
+theme_override_styles/normal = SubResource("StyleBoxFlat_x1cjp")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_tp716")
+theme_override_styles/hover = SubResource("StyleBoxFlat_03vpb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ccu7b")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_6xhvj")
+text = "No
+"
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1392493360]
 z_index = -1
 layout_mode = 1
@@ -108,3 +156,4 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.654902)
 
 [connection signal="pressed" from="Panel/button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/no" to="." method="_on_no_pressed"]

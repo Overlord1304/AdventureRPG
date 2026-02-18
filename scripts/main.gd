@@ -5,8 +5,17 @@ extends Control
 @export var spell_group: ButtonGroup
 var health_tween
 var displayed_health = 0
-var dialogues = [
+var intro = [
 	{"name":"???","text":"Welcome to AdventureRPG. Face different enemies to level up and increase attack power,so you can face better enemies lol. Click attack to fight your first enemy!"}
+]
+var mv_intro_dialogue = [
+	{"name":"???","text":"sup twin"},
+	{"name":"???","text":"im in a bit of a tight situation right now, can you lend me a small sum of,uhhh, 1,000,000 coins?"},
+	{"name":"???","text":"oh yea i didnt introduce myself. you can call me like...."},
+	{"name":"???","text":"uhhh.... yea you can call me like mike or something"},
+	{"name":"mike void","text":"yea that sounds like a good name lets go with that"},
+	{"q":"blahblahfiller","name":"mike void","text":"Give 1,000,000 coins?"},
+	{"name":"mike void","text":"grr your gonna pay for this"}
 ]
 var enemies = [
 	{
@@ -27,7 +36,7 @@ var enemies = [
 		"coin_mul": 1.0,
 		"xp_mul":1.0
 	},
-	{
+	{  
 		"name": "Orc",
 		"min_level": 3,
 		"max_level": 8,
@@ -80,7 +89,7 @@ var enemies = [
 		"attack_mul": 1.8,
 		"coin_mul": 2.0,
 		"xp_mul": 2.1
-	},
+	}, 
 	{
 		"name": "Armored Skeleton",
 		"min_level": 18,
@@ -187,7 +196,7 @@ var bosses = [
 func _ready():
 	Global.load_game()
 	if !Global.has_seen_dialogue:
-		dialogue_box.start_dialogue(dialogues)
+		dialogue_box.start_dialogue(intro)
 		Global.has_seen_dialogue = true
 		Global.save_game()
 	$bgmusic.play()
@@ -217,7 +226,6 @@ func _ready():
 	
 	update_ui()
 func _process(delta):
-	print(Global.mv_seen)
 	if Global.spell_selected == "":
 		$s/ui/HBoxContainer/castspell.disabled = true
 	else:
@@ -476,6 +484,7 @@ func mv_intro():
 	$michaelvoid/michaelvoidanim.play("tp_in")
 	await $michaelvoid/michaelvoidanim.animation_finished
 	$michaelvoid/michaelvoidanim.play("idle")
+	dialogue_box.start_dialogue(mv_intro_dialogue)
 func mv_tp_in():
 	$michaelvoid.show()
 	$michaelvoid/michaelvoidanim.play("tp_in")
