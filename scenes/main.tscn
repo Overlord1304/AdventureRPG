@@ -21,7 +21,13 @@
 [ext_resource type="Texture2D" uid="uid://cqitk06ad05ta" path="res://sprites/castspellhover.png" id="12_gqmmt"]
 [ext_resource type="Texture2D" uid="uid://cw15q5paebsa" path="res://sprites/castspelldisabled.png" id="13_0ld40"]
 [ext_resource type="Texture2D" uid="uid://dqc83e8rbaklf" path="res://sprites/michael void idle.png" id="21_pm3ni"]
+[ext_resource type="Texture2D" uid="uid://dap68g6ojy6ms" path="res://sprites/michael void defeat.png" id="21_y6deb"]
 [ext_resource type="Texture2D" uid="uid://xqjqdg008ta0" path="res://sprites/michael void tp.png" id="23_og1vs"]
+[ext_resource type="Texture2D" uid="uid://k2b11hyum05q" path="res://sprites/michael void tp out 2.png" id="24_og1vs"]
+[ext_resource type="Texture2D" uid="uid://757mfxjfjgtl" path="res://sprites/dungeonnorm.png" id="25_2f3dj"]
+[ext_resource type="Texture2D" uid="uid://bjvbl6klps0mi" path="res://sprites/dungeonpressed.png" id="26_yq6so"]
+[ext_resource type="Texture2D" uid="uid://d12cackamu5qf" path="res://sprites/dungeonhover.png" id="27_fv21b"]
+[ext_resource type="Texture2D" uid="uid://drxlvmidg27fg" path="res://sprites/dungeondisabled.png" id="28_tel4y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
 bg_color = Color(0.50980395, 0.7764706, 0.88235295, 1)
@@ -86,6 +92,18 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_85g3d"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_choun"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chjal"]
+atlas = ExtResource("21_y6deb")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjqg0"]
+atlas = ExtResource("21_y6deb")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vchkt"]
+atlas = ExtResource("21_y6deb")
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2wyq8"]
 atlas = ExtResource("21_pm3ni")
@@ -155,8 +173,50 @@ region = Rect2(160, 0, 32, 32)
 atlas = ExtResource("23_og1vs")
 region = Rect2(192, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_txyw0"]
+atlas = ExtResource("24_og1vs")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vc5cj"]
+atlas = ExtResource("24_og1vs")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvyfr"]
+atlas = ExtResource("24_og1vs")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ty1g6"]
+atlas = ExtResource("24_og1vs")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2jfr"]
+atlas = ExtResource("24_og1vs")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjg73"]
+atlas = ExtResource("24_og1vs")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bu4jf"]
+atlas = ExtResource("24_og1vs")
+region = Rect2(192, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_chjal"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chjal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjqg0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vchkt")
+}],
+"loop": true,
+"name": &"defeat",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2wyq8")
@@ -221,6 +281,32 @@ animations = [{
 }],
 "loop": false,
 "name": &"tp_out",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txyw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vc5cj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvyfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ty1g6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2jfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjg73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bu4jf")
+}],
+"loop": false,
+"name": &"tp_out2",
 "speed": 5.0
 }]
 
@@ -583,7 +669,22 @@ position = Vector2(1579, -383)
 position = Vector2(-784, 586)
 scale = Vector2(4.4453135, 4.000002)
 sprite_frames = SubResource("SpriteFrames_chjal")
-animation = &"tp_out"
+animation = &"tp_out2"
+
+[node name="dungeon" type="TextureButton" parent="." unique_id=1113896057]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 0
+offset_left = 1038.0
+offset_top = 11.0
+offset_right = 1138.0
+offset_bottom = 107.0
+toggle_mode = true
+button_group = ExtResource("2_jyhfs")
+texture_normal = ExtResource("25_2f3dj")
+texture_pressed = ExtResource("26_yq6so")
+texture_hover = ExtResource("27_fv21b")
+texture_disabled = ExtResource("28_tel4y")
+stretch_mode = 0
 
 [connection signal="pressed" from="s/ui/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="s/ui/HBoxContainer/attack" to="." method="_on_attack_pressed"]
@@ -597,3 +698,4 @@ animation = &"tp_out"
 [connection signal="pressed" from="s/ui/spellselect/container/cosmicquake" to="." method="_on_cosmicquake_pressed"]
 [connection signal="pressed" from="s/ui/spellselect/container/hellfire" to="." method="_on_hellfire_pressed"]
 [connection signal="pressed" from="shop" to="." method="_on_shop_pressed"]
+[connection signal="pressed" from="dungeon" to="." method="_on_dungeon_pressed"]

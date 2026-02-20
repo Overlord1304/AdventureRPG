@@ -520,6 +520,17 @@ func mv_tp_in():
 	$michaelvoid/michaelvoidanim.play("idle")
 func mv_defeat():
 	Global.mv_defeated = true
+	$michaelvoid.show()
+	$michaelvoid/michaelvoidanim.play("defeat")
 	dialogue_box.start_dialogue(mv_defeat_dialogue)
+	await dialogue_box.dialogue_finished
 	dialogue_box.start_dialogue(mv_last_dialogue)
+	await dialogue_box.dialogue_finished
+	$michaelvoid/michaelvoidanim.play("tp_out2") 
+	await $michaelvoid/michaelvoidanim.animation_finished
+	$michaelvoid.hide()
 	
+
+
+func _on_dungeon_pressed():
+	get_tree().change_scene_to_file("res://scenes/dungeon.tscn")
