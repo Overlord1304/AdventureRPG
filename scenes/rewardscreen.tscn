@@ -342,6 +342,7 @@ theme_override_fonts/font = ExtResource("2_io0qd")
 theme_override_font_sizes/font_size = 75
 text = "You got:"
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="clicksound" type="AudioStreamPlayer2D" parent="." unique_id=1174539449]
 stream = ExtResource("7_62j3h")

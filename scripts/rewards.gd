@@ -18,9 +18,16 @@ func select_reward():
 			$s/ui/message.text = "You got: %d coins." % reward.amount
 		elif reward.type == "spell":
 			Global.bbath_bought = true
+			if "bloodbath_spell" not in Global.inventory:
+				Global.inventory.append("bloodbath_spell")
 			Global.save_game()
 			$s/ui/message.text = "You received the %s spell." % reward.name
+			
 		elif reward.type == "attack_power":
 			$s/ui/message.text = "You got an attack power increase of %d." % reward.amount
 			Global.attack_bonus += reward.amount
 			Global.save_game()
+
+
+func _on_close_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main.tscn")

@@ -83,9 +83,6 @@ corner_radius_bottom_left = 5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_choun"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_2f3dj"]
-resource_name = "spell_group"
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tefeu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o6xl0"]
@@ -538,6 +535,20 @@ toggle_mode = true
 button_group = ExtResource("2_jyhfs")
 text = "Fireball"
 
+[node name="bloodbath" type="Button" parent="s/ui/spellselect/container" unique_id=1156252598]
+visible = false
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_sugp2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tbgi4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tipki")
+theme_override_styles/hover = SubResource("StyleBoxFlat_85g3d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0wfyh")
+toggle_mode = true
+button_group = ExtResource("2_jyhfs")
+text = "Bloodbath"
+
 [node name="iceblast" type="Button" parent="s/ui/spellselect/container" unique_id=156939448]
 visible = false
 custom_minimum_size = Vector2(100, 40)
@@ -551,20 +562,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_0wfyh")
 toggle_mode = true
 button_group = ExtResource("2_jyhfs")
 text = "Ice Blast"
-
-[node name="bloodbath" type="Button" parent="s/ui/spellselect/container" unique_id=1156252598]
-visible = false
-custom_minimum_size = Vector2(100, 40)
-layout_mode = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_sugp2")
-theme_override_styles/normal = SubResource("StyleBoxFlat_tbgi4")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_tipki")
-theme_override_styles/hover = SubResource("StyleBoxFlat_85g3d")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0wfyh")
-toggle_mode = true
-button_group = SubResource("ButtonGroup_2f3dj")
-text = "Bloodbath"
 
 [node name="baneofskeletons" type="Button" parent="s/ui/spellselect/container" unique_id=1038582751]
 visible = false
@@ -708,8 +705,8 @@ stretch_mode = 0
 [connection signal="pressed" from="s/ui/HBoxContainer/heal" to="." method="_on_heal_pressed"]
 [connection signal="pressed" from="s/ui/HBoxContainer/castspell" to="." method="_on_castspell_pressed"]
 [connection signal="pressed" from="s/ui/spellselect/container/fireball" to="." method="_on_fireball_pressed"]
-[connection signal="pressed" from="s/ui/spellselect/container/iceblast" to="." method="_on_iceblast_pressed"]
 [connection signal="pressed" from="s/ui/spellselect/container/bloodbath" to="." method="_on_bloodbath_pressed"]
+[connection signal="pressed" from="s/ui/spellselect/container/iceblast" to="." method="_on_iceblast_pressed"]
 [connection signal="pressed" from="s/ui/spellselect/container/baneofskeletons" to="." method="_on_baneofskeletons_pressed"]
 [connection signal="pressed" from="s/ui/spellselect/container/discharge" to="." method="_on_discharge_pressed"]
 [connection signal="pressed" from="s/ui/spellselect/container/wraithfire" to="." method="_on_wraithfire_pressed"]
