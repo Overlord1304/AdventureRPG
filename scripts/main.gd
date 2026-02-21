@@ -199,7 +199,7 @@ var bosses = [
 		"coin_mul": 20.0,
 		"xp_mul": 20.0
 	}
-]
+] 
 func _ready():
 	Global.load_game()
 	if !Global.has_seen_dialogue:
@@ -232,7 +232,8 @@ func _ready():
 		$s/ui/spellselect/container/cosmicquake.show()
 	if Global.hfire_bought:
 		$s/ui/spellselect/container/hellfire.show()
-	
+	if Global.bbath_bought:
+		$s/ui/spellselect/container/bloodbath.show()
 	update_ui()
 func _process(delta):
 	if Global.spell_selected == "":
@@ -427,6 +428,8 @@ func cast_spell():
 	match Global.spell_selected:
 		"fireball_spell":
 			dmg = 40
+		"bloodbath_spell":
+			dmg = 60
 		"iceblast_spell":
 			dmg = 75
 		"bos_spell":
@@ -534,3 +537,7 @@ func mv_defeat():
 
 func _on_dungeon_pressed():
 	get_tree().change_scene_to_file("res://scenes/dungeon.tscn")
+
+
+func _on_bloodbath_pressed() -> void:
+	select_spell("bloodbath_spell")

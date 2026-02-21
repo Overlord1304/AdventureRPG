@@ -14,6 +14,7 @@ var attack_bonus = 0
 var current_enemy = {}
 var enemy_defeated = false
 var inventory = []
+var reward_rarity = null
 var saves = "user://saves.save"
 var sbol = true #startbattleonload
 var spell_selected = ""
@@ -25,6 +26,7 @@ var discharge_bought = false
 var wfire_bought = false
 var cquake_bought = false
 var hfire_bought = false
+var bbath_bought = false
 var lootupg1_bought = false
 var lootupg2_bought = false
 var lootupg3_bought = false
@@ -92,7 +94,8 @@ func save_game():
 			"has_seen_dialogue": has_seen_dialogue,
 			"mv_seen": mv_seen,
 			"mv_attack": mv_attack,
-			"mv_defeated": mv_defeated
+			"mv_defeated": mv_defeated,
+			"bbath_bought": bbath_bought
 		}
 	var file = FileAccess.open(saves,FileAccess.WRITE)
 	file.store_var(data)
@@ -145,6 +148,7 @@ func load_game():
 			mv_seen = data.get("mv_seen",false)
 			mv_attack = data.get("mv_attack",false)
 			mv_defeated = data.get("mv_defeated",false)
+			bbath_bought = data.get("bbath_bought",false)
 	else:
 		save_game()
 
@@ -168,6 +172,7 @@ func reset_game():
 	wfire_bought = false
 	cquake_bought = false
 	hfire_bought = false
+	bbath_bought = false
 	lootupg1_bought = false
 	lootupg2_bought = false
 	lootupg3_bought = false
