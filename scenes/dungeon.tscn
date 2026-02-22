@@ -463,4 +463,5 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_hh3g7")
 text = "Close"
 
 [connection signal="pressed" from="s/ui/keygame" to="." method="_on_keygame_pressed"]
+[connection signal="pressed" from="s/ui/whackamolegame" to="." method="_on_whackamolegame_pressed"]
 [connection signal="pressed" from="close" to="." method="_on_close_pressed"]

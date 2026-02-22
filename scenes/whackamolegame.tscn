@@ -2,9 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cndr5ifiywce7" path="res://scripts/whackamolegame.gd" id="1_lfktb"]
 [ext_resource type="FontFile" uid="uid://b1ecuue8wn2td" path="res://fonts/Fredoka-Regular.ttf" id="2_jfdv5"]
-[ext_resource type="Script" uid="uid://bh6yl2gtosoxg" path="res://scripts/holeparent.gd" id="3_m5bju"]
+[ext_resource type="Script" uid="uid://bd3wxpv0prqki" path="res://scripts/wmmanager.gd" id="3_lfktb"]
 [ext_resource type="Texture2D" uid="uid://c4alpwokasr1n" path="res://sprites/hole.png" id="3_r4o0d"]
-[ext_resource type="Script" uid="uid://dtmjkmmqmnvm7" path="res://scripts/hole.gd" id="3_yd1el"]
 [ext_resource type="Texture2D" uid="uid://d2dcw0ip8veux" path="res://sprites/mole.png" id="4_p6do6"]
 [ext_resource type="AudioStream" uid="uid://tebiqcfsoynx" path="res://music/click_sound.wav" id="9_nlujw"]
 [ext_resource type="AudioStream" uid="uid://bg88imggg5hqc" path="res://music/bgarpg.ogg" id="10_qg2e3"]
@@ -104,29 +103,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7a5bf"]
-bg_color = Color(0.99607843, 0.43529412, 0.38039216, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3afjq"]
-bg_color = Color(1.4131035, 0.6298228, 0.553138, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nb7m"]
-bg_color = Color(0.6289062, 0.26402012, 0.22829702, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hh3g7"]
-
 [node name="main" type="Control" unique_id=605445388]
 layout_mode = 3
 anchors_preset = 15
@@ -193,26 +169,27 @@ grow_vertical = 2
 size_flags_horizontal = 2
 size_flags_vertical = 3
 theme = SubResource("Theme_tbgi4")
-theme_override_constants/h_separation = 200
-theme_override_constants/v_separation = 100
+theme_override_constants/h_separation = 25
+theme_override_constants/v_separation = 25
 columns = 3
-script = ExtResource("3_m5bju")
+script = ExtResource("3_lfktb")
 
 [node name="hole" type="Button" parent="ui" unique_id=1979018587]
+custom_minimum_size = Vector2(175, 100)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_yd1el")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
-script = ExtResource("3_yd1el")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole" unique_id=1714738094]
-position = Vector2(83, 67.99999)
+position = Vector2(83, 26)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_co7bn")
 
 [node name="hole2" type="Button" parent="ui" unique_id=119407984]
+custom_minimum_size = Vector2(175, 100)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
@@ -221,11 +198,12 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole2" unique_id=263690990]
-position = Vector2(83, 67.99999)
+position = Vector2(83, 26)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_co7bn")
 
 [node name="hole3" type="Button" parent="ui" unique_id=1048919804]
+custom_minimum_size = Vector2(175, 100)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
@@ -234,11 +212,12 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole3" unique_id=785999741]
-position = Vector2(83, 67.99999)
+position = Vector2(83, 25)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_co7bn")
 
 [node name="hole4" type="Button" parent="ui" unique_id=624783849]
+custom_minimum_size = Vector2(175, 100)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
@@ -247,11 +226,12 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole4" unique_id=551262079]
-position = Vector2(83, 67.99999)
+position = Vector2(83, 25)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_co7bn")
 
 [node name="hole5" type="Button" parent="ui" unique_id=2122401923]
+custom_minimum_size = Vector2(175, 100)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
@@ -260,11 +240,12 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole5" unique_id=1680180770]
-position = Vector2(83, 67.99999)
+position = Vector2(83, 25)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_co7bn")
 
 [node name="hole6" type="Button" parent="ui" unique_id=1128424666]
+custom_minimum_size = Vector2(175, 100)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
@@ -273,11 +254,12 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole6" unique_id=1671898991]
-position = Vector2(83, 67.99999)
+position = Vector2(83, 25)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_co7bn")
 
 [node name="hole7" type="Button" parent="ui" unique_id=1903285653]
+custom_minimum_size = Vector2(175, 100)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
@@ -286,11 +268,12 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole7" unique_id=600514491]
-position = Vector2(83, 67.99999)
+position = Vector2(83, 25)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_co7bn")
 
 [node name="hole8" type="Button" parent="ui" unique_id=1770175656]
+custom_minimum_size = Vector2(175, 100)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
@@ -299,11 +282,12 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole8" unique_id=1537708058]
-position = Vector2(83, 67.99999)
+position = Vector2(83, 25)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_co7bn")
 
 [node name="hole9" type="Button" parent="ui" unique_id=2003594651]
+custom_minimum_size = Vector2(175, 100)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
@@ -312,11 +296,12 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole9" unique_id=764459079]
-position = Vector2(83, 67.99999)
+position = Vector2(83, 25)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_co7bn")
 
 [node name="hole10" type="Button" parent="ui" unique_id=1145422514]
+custom_minimum_size = Vector2(175, 100)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
@@ -325,14 +310,12 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole10" unique_id=764019575]
-position = Vector2(83, 67.99999)
+position = Vector2(83, 25)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_co7bn")
-animation = &"mole"
-frame = 2
-frame_progress = 0.3512407
 
 [node name="hole11" type="Button" parent="ui" unique_id=1636124356]
+custom_minimum_size = Vector2(175, 100)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
@@ -341,11 +324,12 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole11" unique_id=137622120]
-position = Vector2(83, 67.99999)
+position = Vector2(83, 25)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_co7bn")
 
 [node name="hole12" type="Button" parent="ui" unique_id=1550277233]
+custom_minimum_size = Vector2(175, 100)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
@@ -354,7 +338,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole12" unique_id=1885744607]
-position = Vector2(83, 67.99999)
+position = Vector2(83, 25)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_co7bn")
 
@@ -381,24 +365,26 @@ layout_mode = 1
 offset_top = 1.0
 offset_bottom = 1.0
 
-[node name="close" type="Button" parent="." unique_id=155628971 groups=["close"]]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 25.0
-offset_top = -97.0
-offset_right = 209.0
-offset_bottom = -23.0
-grow_vertical = 0
-size_flags_horizontal = 3
-theme_override_constants/outline_size = 3
+[node name="score" type="Label" parent="." unique_id=1961179344]
+layout_mode = 0
+offset_left = -172.0
+offset_top = 27.0
+offset_right = 329.0
+offset_bottom = 119.0
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_jfdv5")
 theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxFlat_7a5bf")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_3afjq")
-theme_override_styles/hover = SubResource("StyleBoxFlat_6nb7m")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_hh3g7")
-text = "Close"
+text = "Score:"
+horizontal_alignment = 1
 
-[connection signal="pressed" from="close" to="." method="_on_close_pressed"]
+[node name="timer" type="Label" parent="." unique_id=494369205]
+layout_mode = 0
+offset_left = -177.0
+offset_top = 80.0
+offset_right = 324.0
+offset_bottom = 172.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_jfdv5")
+theme_override_font_sizes/font_size = 50
+text = "Time:"
+horizontal_alignment = 1
