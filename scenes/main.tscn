@@ -686,6 +686,7 @@ sprite_frames = SubResource("SpriteFrames_chjal")
 animation = &"tp_out2"
 
 [node name="dungeon" type="TextureButton" parent="." unique_id=1113896057]
+visible = false
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 0
 offset_left = 1038.0

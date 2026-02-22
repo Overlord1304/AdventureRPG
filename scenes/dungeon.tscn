@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://b4fgaq8ajkjoh"]
 
 [ext_resource type="Script" uid="uid://bdqvswwi72m15" path="res://scripts/dungeon.gd" id="1_7a5bf"]
-[ext_resource type="ButtonGroup" uid="uid://bpgo7fam45yg7" path="res://scenes/spell_group.tres" id="2_pks5g"]
 [ext_resource type="Texture2D" uid="uid://bayncmwctn10o" path="res://sprites/keybuttonnorm.png" id="3_7wjui"]
 [ext_resource type="FontFile" uid="uid://b1ecuue8wn2td" path="res://fonts/Fredoka-Regular.ttf" id="3_k7h38"]
 [ext_resource type="Texture2D" uid="uid://dmbb2wm3l0dtb" path="res://sprites/keybuttonhover.png" id="4_7a5bf"]
 [ext_resource type="Texture2D" uid="uid://75vyovsx83in" path="res://sprites/keybuttonpressed.png" id="5_3afjq"]
+[ext_resource type="Texture2D" uid="uid://co4l7clhf6lk8" path="res://sprites/blankbuttonnorm.png" id="7_hh3g7"]
+[ext_resource type="Texture2D" uid="uid://mwmcgc6soxpv" path="res://sprites/blankbuttonpressed.png" id="8_rfuge"]
+[ext_resource type="Texture2D" uid="uid://jacsx86scx47" path="res://sprites/blankbuttonhover.png" id="9_1o5ds"]
 [ext_resource type="AudioStream" uid="uid://tebiqcfsoynx" path="res://music/click_sound.wav" id="15_uhcxr"]
 [ext_resource type="AudioStream" uid="uid://bg88imggg5hqc" path="res://music/bgarpg.ogg" id="16_rfai4"]
 [ext_resource type="PackedScene" uid="uid://pv8tvahlowdh" path="res://scenes/dialogue.tscn" id="17_ca23o"]
@@ -332,19 +334,20 @@ offset_top = 148.0
 offset_right = 873.0
 offset_bottom = 619.0
 
-[node name="ui" type="VBoxContainer" parent="s" unique_id=515825842]
-custom_minimum_size = Vector2(0, 700)
+[node name="ui" type="GridContainer" parent="s" unique_id=181078063]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 size_flags_vertical = 3
 theme = SubResource("Theme_tbgi4")
+theme_override_constants/h_separation = 166
+theme_override_constants/v_separation = 79
 
 [node name="keygame" type="TextureButton" parent="s/ui" unique_id=737582465]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 toggle_mode = true
-button_group = ExtResource("2_pks5g")
 texture_normal = ExtResource("3_7wjui")
 texture_pressed = ExtResource("4_7a5bf")
 texture_hover = ExtResource("5_3afjq")
@@ -377,6 +380,43 @@ text = "Common Rewards
 "
 horizontal_alignment = 1
 
+[node name="whackamolegame" type="TextureButton" parent="s/ui" unique_id=242460419]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true
+texture_normal = ExtResource("7_hh3g7")
+texture_pressed = ExtResource("8_rfuge")
+texture_hover = ExtResource("9_1o5ds")
+stretch_mode = 0
+
+[node name="cost" type="Label" parent="s/ui/whackamolegame" unique_id=649216710]
+layout_mode = 0
+offset_left = -201.0
+offset_top = 142.0
+offset_right = 371.0
+offset_bottom = 234.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_k7h38")
+theme_override_font_sizes/font_size = 35
+text = "Cost: 10 coins per game
+"
+horizontal_alignment = 1
+
+[node name="rarity" type="Label" parent="s/ui/whackamolegame" unique_id=1697889669]
+layout_mode = 0
+offset_left = -199.0
+offset_top = 174.0
+offset_right = 373.0
+offset_bottom = 266.0
+theme_override_colors/font_color = Color(0.0695328, 0.4830588, 0.99999994, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_k7h38")
+theme_override_font_sizes/font_size = 35
+text = "Rare Rewards
+"
+horizontal_alignment = 1
+
 [node name="clicksound" type="AudioStreamPlayer2D" parent="." unique_id=1174539449]
 stream = ExtResource("15_uhcxr")
 volume_db = 24.0
@@ -394,14 +434,13 @@ offset_top = 1.0
 offset_bottom = 1.0
 
 [node name="michaelvoid" type="Area2D" parent="." unique_id=2099582666]
-visible = false
 position = Vector2(1579, -383)
 
 [node name="michaelvoidanim" type="AnimatedSprite2D" parent="michaelvoid" unique_id=1681817007]
-position = Vector2(-784, 586)
-scale = Vector2(4.4453135, 4.000002)
+position = Vector2(-996.99994, 830.9999)
+scale = Vector2(3.628906, 3.2187533)
 sprite_frames = SubResource("SpriteFrames_chjal")
-animation = &"tp_out2"
+animation = &"idle"
 
 [node name="close" type="Button" parent="." unique_id=155628971 groups=["close"]]
 layout_mode = 1

@@ -1,6 +1,7 @@
 extends Control
 
-
+func _ready():
+	$michaelvoid/michaelvoidanim.play("idle")
 
 func _on_keygame_pressed():
 	if Global.currency >= 5:

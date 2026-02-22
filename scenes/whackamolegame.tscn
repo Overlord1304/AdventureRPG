@@ -1,0 +1,404 @@
+[gd_scene format=3 uid="uid://b4iw188ujipwq"]
+
+[ext_resource type="Script" uid="uid://cndr5ifiywce7" path="res://scripts/whackamolegame.gd" id="1_lfktb"]
+[ext_resource type="FontFile" uid="uid://b1ecuue8wn2td" path="res://fonts/Fredoka-Regular.ttf" id="2_jfdv5"]
+[ext_resource type="Script" uid="uid://bh6yl2gtosoxg" path="res://scripts/holeparent.gd" id="3_m5bju"]
+[ext_resource type="Texture2D" uid="uid://c4alpwokasr1n" path="res://sprites/hole.png" id="3_r4o0d"]
+[ext_resource type="Script" uid="uid://dtmjkmmqmnvm7" path="res://scripts/hole.gd" id="3_yd1el"]
+[ext_resource type="Texture2D" uid="uid://d2dcw0ip8veux" path="res://sprites/mole.png" id="4_p6do6"]
+[ext_resource type="AudioStream" uid="uid://tebiqcfsoynx" path="res://music/click_sound.wav" id="9_nlujw"]
+[ext_resource type="AudioStream" uid="uid://bg88imggg5hqc" path="res://music/bgarpg.ogg" id="10_qg2e3"]
+[ext_resource type="PackedScene" uid="uid://pv8tvahlowdh" path="res://scenes/dialogue.tscn" id="11_88el4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
+bg_color = Color(0.50980395, 0.7764706, 0.88235295, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.30588236)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyhfs"]
+
+[sub_resource type="Theme" id="Theme_tbgi4"]
+Panel/styles/panel = SubResource("StyleBoxFlat_jyhfs")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p6do6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lfktb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yd1el"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m5bju"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cjgpy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_goixv"]
+atlas = ExtResource("3_r4o0d")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfktb"]
+atlas = ExtResource("4_p6do6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yd1el"]
+atlas = ExtResource("4_p6do6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5bju"]
+atlas = ExtResource("4_p6do6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjgpy"]
+atlas = ExtResource("4_p6do6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_co7bn"]
+atlas = ExtResource("4_p6do6")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bes3"]
+atlas = ExtResource("4_p6do6")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_co7bn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_goixv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfktb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yd1el")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5bju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjgpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_co7bn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bes3")
+}],
+"loop": true,
+"name": &"mole",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7a5bf"]
+bg_color = Color(0.99607843, 0.43529412, 0.38039216, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3afjq"]
+bg_color = Color(1.4131035, 0.6298228, 0.553138, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nb7m"]
+bg_color = Color(0.6289062, 0.26402012, 0.22829702, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hh3g7"]
+
+[node name="main" type="Control" unique_id=605445388]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lfktb")
+
+[node name="Background" type="Panel" parent="." unique_id=1810624345]
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tefeu")
+
+[node name="Outline" type="Panel" parent="." unique_id=1457233608]
+z_index = -2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.0
+offset_top = -302.0
+offset_right = 304.0
+offset_bottom = 301.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o6xl0")
+
+[node name="title" type="Label" parent="." unique_id=867001133]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 26.0
+offset_right = 872.0
+offset_bottom = 118.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_jfdv5")
+theme_override_font_sizes/font_size = 75
+text = "Whack-a-mole"
+horizontal_alignment = 1
+
+[node name="ui" type="GridContainer" parent="." unique_id=730266522]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -195.0
+offset_right = 294.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_tbgi4")
+theme_override_constants/h_separation = 200
+theme_override_constants/v_separation = 100
+columns = 3
+script = ExtResource("3_m5bju")
+
+[node name="hole" type="Button" parent="ui" unique_id=1979018587]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yd1el")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
+script = ExtResource("3_yd1el")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole" unique_id=1714738094]
+position = Vector2(83, 67.99999)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_co7bn")
+
+[node name="hole2" type="Button" parent="ui" unique_id=119407984]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yd1el")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole2" unique_id=263690990]
+position = Vector2(83, 67.99999)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_co7bn")
+
+[node name="hole3" type="Button" parent="ui" unique_id=1048919804]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yd1el")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole3" unique_id=785999741]
+position = Vector2(83, 67.99999)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_co7bn")
+
+[node name="hole4" type="Button" parent="ui" unique_id=624783849]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yd1el")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole4" unique_id=551262079]
+position = Vector2(83, 67.99999)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_co7bn")
+
+[node name="hole5" type="Button" parent="ui" unique_id=2122401923]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yd1el")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole5" unique_id=1680180770]
+position = Vector2(83, 67.99999)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_co7bn")
+
+[node name="hole6" type="Button" parent="ui" unique_id=1128424666]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yd1el")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole6" unique_id=1671898991]
+position = Vector2(83, 67.99999)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_co7bn")
+
+[node name="hole7" type="Button" parent="ui" unique_id=1903285653]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yd1el")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole7" unique_id=600514491]
+position = Vector2(83, 67.99999)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_co7bn")
+
+[node name="hole8" type="Button" parent="ui" unique_id=1770175656]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yd1el")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole8" unique_id=1537708058]
+position = Vector2(83, 67.99999)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_co7bn")
+
+[node name="hole9" type="Button" parent="ui" unique_id=2003594651]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yd1el")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole9" unique_id=764459079]
+position = Vector2(83, 67.99999)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_co7bn")
+
+[node name="hole10" type="Button" parent="ui" unique_id=1145422514]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yd1el")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole10" unique_id=764019575]
+position = Vector2(83, 67.99999)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_co7bn")
+animation = &"mole"
+frame = 2
+frame_progress = 0.3512407
+
+[node name="hole11" type="Button" parent="ui" unique_id=1636124356]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yd1el")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole11" unique_id=137622120]
+position = Vector2(83, 67.99999)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_co7bn")
+
+[node name="hole12" type="Button" parent="ui" unique_id=1550277233]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p6do6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lfktb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yd1el")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5bju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/hole12" unique_id=1885744607]
+position = Vector2(83, 67.99999)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_co7bn")
+
+[node name="s" type="ScrollContainer" parent="." unique_id=510159745]
+layout_mode = 0
+offset_left = -1216.0
+offset_top = 830.0
+offset_right = -636.0
+offset_bottom = 1301.0
+
+[node name="clicksound" type="AudioStreamPlayer2D" parent="." unique_id=1174539449]
+stream = ExtResource("9_nlujw")
+volume_db = 24.0
+max_polyphony = 16
+
+[node name="bgmusic" type="AudioStreamPlayer2D" parent="." unique_id=1496008234]
+stream = ExtResource("10_qg2e3")
+volume_db = -17.431
+
+[node name="Control" parent="." unique_id=1528105590 instance=ExtResource("11_88el4")]
+visible = false
+z_index = 39
+layout_mode = 1
+offset_top = 1.0
+offset_bottom = 1.0
+
+[node name="close" type="Button" parent="." unique_id=155628971 groups=["close"]]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -97.0
+offset_right = 209.0
+offset_bottom = -23.0
+grow_vertical = 0
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_jfdv5")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_7a5bf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3afjq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6nb7m")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hh3g7")
+text = "Close"
+
+[connection signal="pressed" from="close" to="." method="_on_close_pressed"]

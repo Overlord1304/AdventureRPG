@@ -212,6 +212,8 @@ func _ready():
 		mv_tp_in()
 	if Global.mv_defeated:
 		$michaelvoid.hide()
+	if has_spell() and !Global.mv_defeated:
+		mv_intro()
 	randomize()
 	_connect_buttons(self)
 	displayed_health = Global.health
@@ -351,9 +353,11 @@ func update_ui():
 	health_bar.max_value = Global.max_health
 	animate_hb(Global.health)
 	if Global.mv_attack:
-		health_bar.self_modulate = Color("171717")
+		health_bar.self_modulate = Color("3e3e3eff")
 	else:
 		health_bar.self_modulate = Color("fe6f61")
+	if Global.mv_defeated:
+		$dungeon.show()
 	$s/ui/HBoxContainer/castspell.visible = has_spell()
 	$s/ui/HBoxContainer/heal.disabled = (
 		Global.phase == Global.game_phase.FIGHTING
@@ -513,7 +517,7 @@ func mv_intro():
 	$michaelvoid/michaelvoidanim.play("tp_out")
 	await $michaelvoid/michaelvoidanim.animation_finished
 	$michaelvoid.hide()
-	message_label.text = "You feel your heart turn black with void"
+	message_label.text = "You feel your heart turn black with void. Enemy damage increased by 1.5"
 	message_label.show()
 	update_ui()
 func mv_tp_in():
