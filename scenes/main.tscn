@@ -577,6 +577,20 @@ toggle_mode = true
 button_group = ExtResource("2_jyhfs")
 text = "B.O.S"
 
+[node name="tidalwave" type="Button" parent="s/ui/spellselect/container" unique_id=1082268901]
+visible = false
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_sugp2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tbgi4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tipki")
+theme_override_styles/hover = SubResource("StyleBoxFlat_85g3d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0wfyh")
+toggle_mode = true
+button_group = ExtResource("2_jyhfs")
+text = "Tidal Wave"
+
 [node name="discharge" type="Button" parent="s/ui/spellselect/container" unique_id=692536429]
 visible = false
 custom_minimum_size = Vector2(100, 40)
@@ -701,6 +715,26 @@ texture_hover = ExtResource("27_fv21b")
 texture_disabled = ExtResource("28_tel4y")
 stretch_mode = 0
 
+[node name="coinsbuff" type="Area2D" parent="." unique_id=1556034882]
+
+[node name="coinsbuffsprite" type="Sprite2D" parent="coinsbuff" unique_id=1774262655]
+position = Vector2(69, 558)
+scale = Vector2(2.546875, 1.9374999)
+texture = ExtResource("4_eb6dy")
+
+[node name="health" type="Label" parent="coinsbuff" unique_id=1626919246]
+offset_left = 1.0
+offset_top = 590.0
+offset_right = 150.0
+offset_bottom = 634.0
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_sugp2")
+theme_override_font_sizes/font_size = 35
+text = "05:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="s/ui/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="s/ui/HBoxContainer/attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="s/ui/HBoxContainer/heal" to="." method="_on_heal_pressed"]
@@ -709,6 +743,7 @@ stretch_mode = 0
 [connection signal="pressed" from="s/ui/spellselect/container/bloodbath" to="." method="_on_bloodbath_pressed"]
 [connection signal="pressed" from="s/ui/spellselect/container/iceblast" to="." method="_on_iceblast_pressed"]
 [connection signal="pressed" from="s/ui/spellselect/container/baneofskeletons" to="." method="_on_baneofskeletons_pressed"]
+[connection signal="pressed" from="s/ui/spellselect/container/tidalwave" to="." method="_on_tidalwave_pressed"]
 [connection signal="pressed" from="s/ui/spellselect/container/discharge" to="." method="_on_discharge_pressed"]
 [connection signal="pressed" from="s/ui/spellselect/container/wraithfire" to="." method="_on_wraithfire_pressed"]
 [connection signal="pressed" from="s/ui/spellselect/container/cosmicquake" to="." method="_on_cosmicquake_pressed"]

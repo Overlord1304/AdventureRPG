@@ -27,6 +27,7 @@ var wfire_bought = false
 var cquake_bought = false
 var hfire_bought = false
 var bbath_bought = false
+var twave_bought = false
 var lootupg1_bought = false
 var lootupg2_bought = false
 var lootupg3_bought = false
@@ -51,6 +52,7 @@ var has_seen_dialogue = false
 var mv_seen = false
 var mv_attack = false
 var mv_defeated = false
+var coin_buff = 0
 func save_game():
 	var data = {
 			"health": health,
@@ -95,7 +97,8 @@ func save_game():
 			"mv_seen": mv_seen,
 			"mv_attack": mv_attack,
 			"mv_defeated": mv_defeated,
-			"bbath_bought": bbath_bought
+			"bbath_bought": bbath_bought,
+			"twave_bought": twave_bought
 		}
 	var file = FileAccess.open(saves,FileAccess.WRITE)
 	file.store_var(data)
@@ -149,9 +152,13 @@ func load_game():
 			mv_attack = data.get("mv_attack",false)
 			mv_defeated = data.get("mv_defeated",false)
 			bbath_bought = data.get("bbath_bought",false)
+			twave_bought = data.get("twave_bought",false)
 	else:
 		save_game()
-
+func _process(delta: float) -> void:
+	if coin_buff > 0:
+		await get_tree().create_timer(300).timeout
+		coin_buff = 0
 
 func reset_game():
 	current_enemy = null
@@ -173,6 +180,7 @@ func reset_game():
 	cquake_bought = false
 	hfire_bought = false
 	bbath_bought = false
+	twave_bought = false
 	lootupg1_bought = false
 	lootupg2_bought = false
 	lootupg3_bought = false

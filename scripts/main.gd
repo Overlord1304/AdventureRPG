@@ -236,6 +236,8 @@ func _ready():
 		$s/ui/spellselect/container/hellfire.show()
 	if Global.bbath_bought:
 		$s/ui/spellselect/container/bloodbath.show()
+	if Global.twave_bought:
+		$s/ui/spellselect/container/tidalwave.show()
 	update_ui()
 func _process(delta):
 	if Global.spell_selected == "":
@@ -324,7 +326,7 @@ func win_battle():
 	Global.phase = Global.game_phase.VICTORY
 	var base_coins_gain = 10 + Global.level * 2
 	var base_xp_gain = 20 + Global.level * 5
-	var coins_gain = int(base_coins_gain * Global.current_enemy["coin_mul"]* Global.coin_bonus_mul)
+	var coins_gain = int(base_coins_gain * Global.current_enemy["coin_mul"]* Global.coin_bonus_mul*Global.coin_buff)
 	var xp_gain = int(base_xp_gain * Global.current_enemy["xp_mul"] * Global.xp_bonus_mul)
 
 	Global.currency += coins_gain
@@ -438,6 +440,8 @@ func cast_spell():
 			dmg = 75
 		"bos_spell":
 			dmg = 200
+		"tidalwave_spell":
+			dmg = 300
 		"discharge_spell":
 			dmg = 400
 		"wraithfire_spell":
@@ -465,6 +469,7 @@ func _on_castspell_pressed() -> void:
 
 func _on_iceblast_pressed() -> void:
 	select_spell("iceblast_spell")
+	
 func pick(p):
 	var candidates = []
 	for e in p:
@@ -545,3 +550,9 @@ func _on_dungeon_pressed():
 
 func _on_bloodbath_pressed() -> void:
 	select_spell("bloodbath_spell")
+
+	
+
+
+func _on_tidalwave_pressed() -> void:
+	select_spell("tidalwave_spell")

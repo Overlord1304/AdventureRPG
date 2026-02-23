@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://b4iw188ujipwq"]
 
-[ext_resource type="Script" uid="uid://cndr5ifiywce7" path="res://scripts/whackamolegame.gd" id="1_lfktb"]
 [ext_resource type="FontFile" uid="uid://b1ecuue8wn2td" path="res://fonts/Fredoka-Regular.ttf" id="2_jfdv5"]
 [ext_resource type="Script" uid="uid://bd3wxpv0prqki" path="res://scripts/wmmanager.gd" id="3_lfktb"]
 [ext_resource type="Texture2D" uid="uid://c4alpwokasr1n" path="res://sprites/hole.png" id="3_r4o0d"]
@@ -100,7 +99,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"mole",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="main" type="Control" unique_id=605445388]
@@ -110,7 +109,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_lfktb")
 
 [node name="Background" type="Panel" parent="." unique_id=1810624345]
 z_index = -2
@@ -187,6 +185,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
 position = Vector2(83, 26)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_co7bn")
+animation = &"mole"
 
 [node name="hole2" type="Button" parent="ui" unique_id=119407984]
 custom_minimum_size = Vector2(175, 100)
@@ -367,24 +366,22 @@ offset_bottom = 1.0
 
 [node name="score" type="Label" parent="." unique_id=1961179344]
 layout_mode = 0
-offset_left = -172.0
-offset_top = 27.0
-offset_right = 329.0
-offset_bottom = 119.0
+offset_left = 15.0
+offset_top = 18.0
+offset_right = 516.0
+offset_bottom = 110.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_jfdv5")
 theme_override_font_sizes/font_size = 50
 text = "Score:"
-horizontal_alignment = 1
 
 [node name="timer" type="Label" parent="." unique_id=494369205]
 layout_mode = 0
-offset_left = -177.0
-offset_top = 80.0
-offset_right = 324.0
-offset_bottom = 172.0
+offset_left = 14.0
+offset_top = 75.0
+offset_right = 515.0
+offset_bottom = 167.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_jfdv5")
 theme_override_font_sizes/font_size = 50
 text = "Time:"
-horizontal_alignment = 1
