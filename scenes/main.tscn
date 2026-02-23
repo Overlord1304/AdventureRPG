@@ -715,14 +715,15 @@ texture_hover = ExtResource("27_fv21b")
 texture_disabled = ExtResource("28_tel4y")
 stretch_mode = 0
 
-[node name="coinsbuff" type="Area2D" parent="." unique_id=1556034882]
+[node name="coinsbuff" type="StaticBody2D" parent="." unique_id=619355022]
+visible = false
 
 [node name="coinsbuffsprite" type="Sprite2D" parent="coinsbuff" unique_id=1774262655]
 position = Vector2(69, 558)
 scale = Vector2(2.546875, 1.9374999)
 texture = ExtResource("4_eb6dy")
 
-[node name="health" type="Label" parent="coinsbuff" unique_id=1626919246]
+[node name="coinbufftime" type="Label" parent="coinsbuff" unique_id=1626919246]
 offset_left = 1.0
 offset_top = 590.0
 offset_right = 150.0

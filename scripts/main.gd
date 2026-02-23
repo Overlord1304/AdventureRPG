@@ -248,7 +248,19 @@ func _process(delta):
 		Global.mv_seen = true
 		Global.save_game()
 		mv_intro()
-
+	if Global.coin_buff_active:
+		Global.coin_buff_time_left -= delta
+		update_timer_label()
+		if Global.coin_buff_time_left <= 0:
+			$coinsbuff.hide()
+			Global.coin_buff_time_left = 0
+			Global.coin_buff = 1
+			Global.coin_buff_active = false
+func update_timer_label():
+	var total_seconds = int(Global.coin_buff_time_left)
+	var minutes = total_seconds / 60
+	var seconds = total_seconds % 60
+	$coinsbuff/coinbufftime.text = str(minutes)+":"+str(seconds).pad_zeros(2)
 	
 	
 func start_new_battle():

@@ -52,8 +52,8 @@ func select_reward():
 			Global.attack_bonus += reward.amount
 			Global.save_game()
 		elif reward.type == "buff":
-			$s/ui/message.text = "You got a %dx coins boost for 5 minues." % reward.amount
-			Global.coin_bonus_mul *= 1.5
+			$s/ui/message.text = "You got a "+str(reward.amount)+"x coins boost for 5 minutes." 
+			Global.activate_coin_buff(15)
 			Global.save_game()  
 func _on_close_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main.tscn")

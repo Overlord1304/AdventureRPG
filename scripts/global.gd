@@ -52,7 +52,9 @@ var has_seen_dialogue = false
 var mv_seen = false
 var mv_attack = false
 var mv_defeated = false
-var coin_buff = 0
+var coin_buff = 1.0
+var coin_buff_time_left = 0.0
+var coin_buff_active = false
 func save_game():
 	var data = {
 			"health": health,
@@ -155,10 +157,12 @@ func load_game():
 			twave_bought = data.get("twave_bought",false)
 	else:
 		save_game()
-func _process(delta: float) -> void:
-	if coin_buff > 0:
-		await get_tree().create_timer(300).timeout
-		coin_buff = 0
+func activate_coin_buff(buff):
+	coin_buff = buff
+	$coinsbuff.show()
+	coin_buff_time_left = 300
+	coin_buff_active = true
+
 
 func reset_game():
 	current_enemy = null
