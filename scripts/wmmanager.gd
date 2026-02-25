@@ -37,7 +37,7 @@ func spawn_mole():
 	active_hole = hole
 	var sprite = hole.get_node("AnimatedSprite2D")
 	sprite.play("mole")
-	await get_tree().create_timer(0.7).timeout
+	await get_tree().create_timer(0.9).timeout
 	if active_hole == hole and game_running:
 		sprite.play("default")
 		active_hole = null
@@ -46,7 +46,7 @@ func _on_button_pressed(hole):
 	if not game_running:
 		return
 	if hole == active_hole:
-		score += 20 
+		score += 1
 		$"../score".text = "Score: %d/35" % score
 		if score>=35:
 			Global.reward_rarity = "rare"

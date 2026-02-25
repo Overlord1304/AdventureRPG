@@ -74,7 +74,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_goixv")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }, {
@@ -97,7 +97,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6bes3")
 }],
-"loop": true,
+"loop": false,
 "name": &"mole",
 "speed": 8.0
 }]
@@ -200,6 +200,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
 position = Vector2(83, 26)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_co7bn")
+animation = &"mole"
 
 [node name="hole3" type="Button" parent="ui" unique_id=1048919804]
 custom_minimum_size = Vector2(175, 100)
@@ -214,6 +215,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_cjgpy")
 position = Vector2(83, 25)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_co7bn")
+animation = &"mole"
 
 [node name="hole4" type="Button" parent="ui" unique_id=624783849]
 custom_minimum_size = Vector2(175, 100)
@@ -372,8 +374,8 @@ offset_right = 516.0
 offset_bottom = 110.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_jfdv5")
-theme_override_font_sizes/font_size = 50
-text = "Score:"
+theme_override_font_sizes/font_size = 45
+text = "Score: 0/35"
 
 [node name="timer" type="Label" parent="." unique_id=494369205]
 layout_mode = 0
@@ -383,5 +385,5 @@ offset_right = 515.0
 offset_bottom = 167.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_jfdv5")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
 text = "Time:"
